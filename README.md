@@ -1,3 +1,3 @@
-# Projet "Cultute Jeux Videos"
+# Projet "Culture Jeux Videos"
 
-* Site pour avoir tout connaitre des jeux videos (date de creation, equipe, etc.. )
+* Site pour tout connaitre des jeux videos (date de creation, equipe, etc.. )
