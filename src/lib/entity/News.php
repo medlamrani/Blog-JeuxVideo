@@ -1,5 +1,7 @@
 <?php
 
+namespace Project\lib\entity;
+
 class News
 {
     protected $id,

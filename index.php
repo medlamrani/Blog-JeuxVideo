@@ -3,7 +3,8 @@
 require_once realpath("vendor/autoload.php");
 
 use Project\controller;
-$controller = new Project\Controller();
+$controller = new \Controller();
+
 //use  Project\lib\model;
 //$game = new model\GameManager(); 
 

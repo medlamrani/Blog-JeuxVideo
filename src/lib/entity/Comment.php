@@ -1,5 +1,7 @@
 <?php 
 
+namespace Project\lib\entity;
+
 class Comment 
 {
     protected $id,

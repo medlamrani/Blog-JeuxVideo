@@ -1,6 +1,7 @@
 <?php 
-
 namespace Project\controller;
+
+require_once realpath("vendor/autoload.php");
 
 class Controller
 {
