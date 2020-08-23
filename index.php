@@ -2,11 +2,9 @@
 
 require_once realpath("vendor/autoload.php");
 
-use Project\controller;
-$controller = new \Controller();
+use Project\controller\Controller;
+$controller = new Controller();
 
-//use  Project\lib\model;
-//$game = new model\GameManager(); 
 
 try
 {

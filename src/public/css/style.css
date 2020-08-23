@@ -5,11 +5,13 @@ body {
   
   .masthead {
     width: 100%;
+    min-width: 980px;
     height: calc(100vh - 100px);
     min-height: 775px;
     padding-top: 0;
     padding-bottom: 0;
-    background: url(../images/manette.jpg);
+    background: url(../image/manette.jpg);
     background-size: cover;
     background-position-y: top;
+    margin: auto;
   }
