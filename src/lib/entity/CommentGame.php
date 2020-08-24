@@ -2,7 +2,7 @@
 
 namespace Project\lib\entity;
 
-class Comment 
+class CommentGame 
 {
     protected $id,
               $gameId,

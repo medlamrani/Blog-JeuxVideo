@@ -1,7 +1,12 @@
 body {
     font-family: "Lato", sans-serif;
+    background-color: cadetblue;
   }
   
+  .mynav {
+    max-width:900px;
+    margin: auto;
+  }
   
   .masthead {
     width: 100%;
@@ -13,5 +18,11 @@ body {
     background: url(../image/manette.jpg);
     background-size: cover;
     background-position-y: top;
-    margin: auto;
+    margin: 100px auto;
+  }
+
+  .navlink {
+    text-decoration: none;
+    color: black;
+    margin-left: 10px;
   }
