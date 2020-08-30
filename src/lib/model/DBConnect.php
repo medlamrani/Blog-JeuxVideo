@@ -1,5 +1,7 @@
 <?php
 
+namespace Project\lib\model;
+
 class DBConnect
 {
     private $servername;

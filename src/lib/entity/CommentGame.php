@@ -1,15 +1,15 @@
-<?php
+<?php 
 
 namespace Project\lib\entity;
 
-class News
+class CommentGame 
 {
     protected $id,
-              $user,
-              $title,
+              $gameId,
+              $userId,
               $content,
-              $addDate,
-              $updateDate;
+              $report,
+              $commentDate;
 
     public function __construct( $values = [])
     {    
@@ -30,16 +30,11 @@ class News
                 $this->$method($value);
             }
         }
-    }      
+    } 
     
-    public function isNew()
-    {
-        return empty($this->id);
-    }
-
     public function isValid()
     {
-        return !(empty($this->title) || empty($this->content));
+        return !(empty($this->content));
     }
 
     public function setId($id)
@@ -47,14 +42,14 @@ class News
         $this->id = (int) $id;
     }
 
+    public function setGameId($gameId)
+    {
+        $this->gameId = (int) $gameId;
+    }
+
     public function setUserId($userId)
     {
         $this->userId = (int) $userId;
-    }
-
-    public function setTitle($title)
-    {
-        $this->title = $title;
     }
 
     public function setContent($content)
@@ -62,14 +57,14 @@ class News
         $this->content = $content;
     }
 
-    public function setAddDate($addDate)
+    public function setReport($report)
     {
-        $this->addDate = $addDate;
+        $this->report = $report;
     }
 
-    public function setUpdateDate($updateDate)
+    public function setCommentDate($commentDate)
     {
-        $this->updateDate = $updateDate;
+        $this->commentDate = $commentDate;
     }
 
     public function id()
@@ -77,28 +72,28 @@ class News
         return $this->id;
     }
 
+    public function gameId()
+    {
+        return $this->gameId;
+    }
+
     public function userId()
     {
         return $this->userId;
     }
-
-    public function title()
-    {
-        return $this->title;
-    }
-
+    
     public function content()
     {
         return $this->content;
     }
 
-    public function addDate()
+    public function report()
     {
-        return $this->addDate;
+        return $this->report;
     }
 
-    public function updateDate()
+    public function commentDate()
     {
-        return $this->updateDate;
+        return $this->commentDate;
     }
 }
