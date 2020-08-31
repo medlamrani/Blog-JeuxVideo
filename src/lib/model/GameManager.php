@@ -2,8 +2,6 @@
 
 namespace Project\lib\model;
 
-use  Project\lib\model;
-
 class GameManager extends DBConnect
 {
     public function addGame(Game $game)
