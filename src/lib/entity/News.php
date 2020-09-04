@@ -5,7 +5,7 @@ namespace Project\lib\entity;
 class News
 {
     protected $id,
-              $userId,
+              $user,
               $title,
               $content,
               $addDate,

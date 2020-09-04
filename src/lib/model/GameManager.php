@@ -2,9 +2,11 @@
 
 namespace Project\lib\model;
 
+
 use  Project\lib\model;
 use  Project\lib\entity\Game;
 use  Project\lib\entity\Platform;
+
 
 class GameManager extends DBConnect
 {

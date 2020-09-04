@@ -41,6 +41,11 @@ try
         elseif($_GET['action'] == 'addNews')
         {
             $adminController->addNews();
+
+        elseif($_GET['action'] == 'addPlatform')
+        {
+            $adminController->addPlatform();
+
         }
     }
     else
