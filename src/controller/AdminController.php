@@ -3,6 +3,7 @@
 namespace Project\controller;
 
 use  Project\lib\model;
+use  Project\lib\entity;
 
 class AdminController
 {
@@ -18,20 +19,74 @@ class AdminController
 
     public function administration()
     {
-        require('views/back/administration.php');
+        require('src/views/back/administration.php');
+    }
+
+    public function adminConnect()
+    {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        
+        $admin = new model\UserManager();
+
+        $result = $admin->adminConnect($username, $password);
+
+        if($result == true)
+        {
+            $newsManager = new model\PostManager();
+            $gameManager = new model\GameManger();
+
+            $this->administration(); 
+        }
+        else
+        {              
+            require('src/views/back/adminConnect.php');         
+        }
+    }
+
+    public function addAdmin()
+    {
+
+        $userManager = new model\UserManager();
+
+        if(isset($_POST['username']))
+        {
+            $pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+            $user = new entity\User(
+                [
+                    'id' => 0,
+                    'roleId' => 1,
+                    'username' => $_POST['username'],
+                    'name' => $_POST['name'],
+                    'lastname' => $_POST['lastname'],
+                    'email' => $_POST['email'],
+                    'password' => $pass_hache
+                ]
+            );
+
+            var_dump($user);
+
+            $userManager->addAdmin($user);
+            require('src/views/back/adminConnect.php');                       
+        }
+        else
+        {
+            require('src/views/back/addAdmin.php');
+        }
     }
 
     public function addNews()
     {
-        $this->sessionExists();
+        //$this->sessionExists();
 
-        $newsManager = new NewsManager();
+        $newsManager = new model\NewsManager();
 
         if(isset($_POST['title']))
         {
-            $news = new News(
+            $news = new entity\News(
                 [
-                    'userId' => $_SESSION['id'],
+                    'userId' => 1,
                     'title' => $_POST['title'],
                     'content' => $_POST['content']
                 ]
@@ -42,19 +97,19 @@ class AdminController
         }
         else
         {
-            require('views/back/addNews.php');
-        }       
+            require('src/views/back/addNews.php');
+        } 
     }
 
     public function updateNews()
     {
         $this->sessionExists();
 
-        $newsManager = new NewsManager();
+        $newsManager = new model\NewsManager();
 
         if(isset($_POST['title']))
         {
-            $news = new News(
+            $news = new entity\News(
                 [
                     'userId' => $_SESSION['id'],
                     'title' => $_POST['title'],
@@ -68,7 +123,7 @@ class AdminController
         }
         else
         {
-            require('views/back/updateNews.php');
+            require('src/views/back/updateNews.php');
         }  
     }
 
@@ -76,8 +131,45 @@ class AdminController
     {
         $this->sessionExists();
 
-        $newsManager = new NewsManager();
+        $newsManager = new model\NewsManager();
         $newsManager->deleteNews($id);
+
+        $this->administration();
+    }
+
+    public function addGame()
+    {
+        //$this->sessionExists();
+
+        $gameManager = new model\GameManager();
+        
+        if(isset($_POST['name']))
+        {
+            $game = new entity\Game(
+                [
+                    'name' => $_POST['name'],
+                    'resume' => $_POST['resume'],
+                    'platformId' => $_POST['platform'],
+                    'editorId' => $_POST['editor'],
+                    'releaseDate' => $_POST['releaseDate']
+                ]
+            );
+
+            $gameManager->addGame($game);
+            $this->administration();
+        }
+        else
+        {
+            require('src/views/back/addGame.php');
+        }       
+    }
+
+    public function deleteGame()
+    {
+        $this->sessionExists();
+
+        $gameManager = new model\GameManager();
+        $gameManager->deleteGame($id);
 
         $this->administration();
     }

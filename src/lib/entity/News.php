@@ -11,8 +11,9 @@ class News
               $addDate,
               $updateDate;
 
-    public function __construct( $values = [])
+    public function __construct( $values )
     {    
+        var_dump($values);
         if (!empty($values))
         {
             $this->hydrate($values);

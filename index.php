@@ -24,13 +24,28 @@ try
         {
             $controller->listOfNews();
         }
-        elseif($_GET['action'] == 'addgame')
+
+        elseif($_GET['action'] == 'addAdmin')
+        {
+            $adminController->addAdmin();
+        }
+
+        elseif($_GET['action'] == 'administration')
+        {
+            $adminController->administration();
+        }
+        elseif($_GET['action'] == 'addGame')
         {
             $adminController->addGame();
         }
+        elseif($_GET['action'] == 'addNews')
+        {
+            $adminController->addNews();
+
         elseif($_GET['action'] == 'addPlatform')
         {
             $adminController->addPlatform();
+
         }
     }
     else

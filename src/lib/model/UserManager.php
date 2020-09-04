@@ -3,6 +3,7 @@
 namespace Project\lib\model;
 
 use  Project\lib\model;
+use  Project\lib\entity\User;
 
 class UserManager extends DBConnect
 {
@@ -45,17 +46,20 @@ class UserManager extends DBConnect
        }
    }
 
-   public function addUser(User $user)
+   public function addAdmin(User $user)
    {
-        $sql = "INSERT INTO user (username, password) VALUES(:username, :password)";
+        $sql = "INSERT INTO user (id, role_id, username, name, lastname, email, password) 
+        VALUES(:id, :role_id, :username, :name, :lastname, :email, :password)";
         $db = $this->connect()->prepare($sql);
 
-
+        $db->bindValue(':id', $user->id());
+        $db->bindValue(':role_id', $user->roleId());
         $db->bindValue(':username', $user->username());
+        $db->bindValue(':name', $user->name());
+        $db->bindValue(':lastname', $user->lastname());
+        $db->bindValue(':email', $user->email());
         $db->bindValue(':password', $user->password());
 
-        $db->execute();
-
-        $_SESSION['message'] = 'User added'; 
+        $db->execute(); 
    }
 }

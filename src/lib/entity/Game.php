@@ -7,10 +7,10 @@ class Game
 {
     protected $id,
               $name,
+              $resume,
               $platformId,
               $editorId,
-              $releaseDate,
-              $ratingId;
+              $releaseDate;
               
     public function __construct( $values = [])
     {    
@@ -48,6 +48,11 @@ class Game
         $this->name = $name;
     }
 
+    public function setResume($resume)
+    {
+        $this->resume = $resume;
+    }
+
     public function setPlatformId($platformId)
     {
         $this->platformId = (int) $platformId;
@@ -71,6 +76,11 @@ class Game
     public function name()
     {
         return $this->name;
+    }
+
+    public function resume()
+    {
+        return $this->resume;
     }
 
     public function platformId()

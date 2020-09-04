@@ -9,15 +9,18 @@
         <title><?= $title ?></title>
     </head>
     <body>  
+    <div class="bloc-home">
         <nav class="mynav navbar navbar-expand-lg navbar-light bg-light fixed-top justify-content-between">
-            <a class="navbar-brand">
-                <img src="src/public/image/controller.png" width="40" height="40" alt="" loading="lazy">
-                Jeux Videos
-            </a>
+            <div class="collapse navbar-collapse ml-4">
+                <a class="navbar-brand">
+                    <img src="src/public/image/controller.png" width="40" height="40" alt="" loading="lazy">
+                    Jeux Videos
+                </a>
+            </div>    
             <div class="collapse navbar-collapse ml-5" id="navbarTogglerDemo02">
                 <a class="navlink" href="index.php">Accueil</a>
-                <a class="navlink" href="index.php?action=">Games</a>   
-                <a class="navlink" href="index.php?action=">Actualites</a>   
+                <a class="navlink" href="index.php?action=games">Games</a>   
+                <a class="navlink" href="index.php?action=actualites">Actualites</a>   
                 <a class="navlink" href="index.php?action=">Top 5</a>             
             </div>
             <div class="collapse navbar-collapse ml-5" >
@@ -31,6 +34,6 @@
         <div class="main">
             <?= $content ?>
         </div>
-
+    </div>
     </body>
 </html>
