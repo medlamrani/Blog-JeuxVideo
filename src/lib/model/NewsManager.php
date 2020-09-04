@@ -2,7 +2,8 @@
 
 namespace Project\lib\model;
 
-use  Project\lib\model;
+use  Project\lib\entity\News;
+use  PDO;
 
 class NewsManager extends DBConnect
 {
@@ -57,16 +58,13 @@ class NewsManager extends DBConnect
             $sql .= ' LIMIT ' . (int) $limite. ' OFFSET '. (int) $debut;
         }
 
-        $req = $this->connect()->query($sql);
+        $req = $this->connect()->query($sql);  
         $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'News');
+        
+
 
         $listNews = $req->fetchAll();
-
-        foreach ($listNews as $news)
-        {
-            $news->setAddDate(new DateTime($news->addDate()));
-            $news->setUpdateDate(new DateTime($news->updateDate()));
-        }
+var_dump($listNews);
 
         $req->closeCursor();
 

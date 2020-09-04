@@ -2,6 +2,8 @@
 
 namespace Project\lib\model;
 
+use \PDO;
+
 class DBConnect
 {
     private $servername;
@@ -16,7 +18,7 @@ class DBConnect
         $this->servername = "localhost";
         $this->username = "root";
         $this->password = "";
-        $this->dbname = "mywebsite";
+        $this->dbname = "dbproject";
         $this->charset = "utf8";
 
     

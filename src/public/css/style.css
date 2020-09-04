@@ -1,28 +1,38 @@
 body {
     font-family: "Lato", sans-serif;
-    background-color: cadetblue;
+    background-image: url(../image/gameimage.jpg);
+  }
+
+  .bloc-home{
+    width: 900px;
+    min-width: 700px;
+    margin: auto;
   }
   
   .mynav {
-    max-width:900px;
+    width: 900px;
+    min-width: 700px;
+    height: 80px;
     margin: auto;
   }
   
   .masthead {
     width: 100%;
-    min-width: 980px;
-    height: calc(100vh - 100px);
-    min-height: 775px;
+    min-width: 700px;
+    height: 400px;
     padding-top: 0;
     padding-bottom: 0;
-    background: url(../image/manette.jpg);
-    background-size: cover;
-    background-position-y: top;
-    margin: 100px auto;
+    margin: 80px auto;
+    background-color: coral;
   }
 
   .navlink {
     text-decoration: none;
     color: black;
     margin-left: 10px;
+  }
+
+  .login-bloc {
+    height: 100%;
+    margin-top: 200px;
   }
