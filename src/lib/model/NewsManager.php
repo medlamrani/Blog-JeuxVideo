@@ -14,9 +14,9 @@ class NewsManager extends DBConnect
         VALUES(:user_id, :title, :content, NOW(), NOW())";
         $db = $this->connect()->prepare($sql);
 
-        $db->bindValue(':title', $news->title());
-        $db->bindValue(':user_id', $news->userId());
-        $db->bindValue(':content', $news->content());
+        $db->bindValue(':title', $news->getTitle());
+        $db->bindValue(':user_id', $news->getUserId());
+        $db->bindValue(':content', $news->getContent());
 
         $db->execute();
 
@@ -38,9 +38,9 @@ class NewsManager extends DBConnect
         $sql = "UPDATE news SET user_id = :user_id, title = :title, content = :content, updateDate = NOW() WHERE id = :id";
         $req = $this->connect()->prepare($sql);
 
-        $req->bindValue(':title', $news->title());
-        $req->bindValue(':user_id', $news->userId());
-        $req->bindValue(':content', $news->content());
+        $db->bindValue(':title', $news->getTitle());
+        $db->bindValue(':user_id', $news->getUserId());
+        $db->bindValue(':content', $news->getContent());
         $req->bindValue(':id', $news->id(), PDO::PARAM_INT);
 
         $req->execute();
@@ -80,7 +80,7 @@ class NewsManager extends DBConnect
         $req->bindValue(':id', (int) $id, PDO::PARAM_INT);
         $req->execute();
 
-        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'News');
+        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Project\lib\entity\News');
 
         $news = $req->fetch();
 

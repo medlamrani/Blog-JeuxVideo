@@ -18,12 +18,12 @@ class Role extends Entity
         $this->role = $role;
     }
 
-    public function id()
+    public function getId()
     {
         return $this->id;
     }
 
-    public function role()
+    public function getRole()
     {
         return $this->role;
     }

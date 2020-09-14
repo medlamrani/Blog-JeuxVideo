@@ -14,7 +14,6 @@ class GameManager extends DBConnect
     public function addGame(Game $game)
     {
         // Ajouter un jeu
-        var_dump($game);
         $sql = "INSERT INTO game(name, resume,  platform_id, editor_id, release_date)
         VALUES(:name, :resume, :platform_id, :editor_id, :release_date)";
         $req = $this->connect()->prepare($sql);
@@ -42,10 +41,12 @@ class GameManager extends DBConnect
         $sql = "UPDATE game SET name = :name, resume = :resume, platform_id = :platform_id, editor_id = :editor_id, release_date = :release_date";
         $req = $this->connect()->prepare($sql);
 
-        $req->bindValue(':name', $game->name());
-        $req->bindValue(':platform_id', $game->name());
-        $req->bindValue(':editor_id', $game->name());
-        $req->bindValue(':release_date', $game->name());
+        $req->bindValue(':name', $game->getName());
+        $req->bindValue(':resume', $game->getResume());
+        $req->bindValue(':platform_id', $game->getPlatform()->getId());
+        $req->bindValue(':editor_id', $game->getEditor()->getId());
+        $req->bindValue(':release_date', $game->getReleaseDate());
+        
         $req->bindValue(':id', $game->id(), PDO::PARAM_INT);
         
         $req->execute();

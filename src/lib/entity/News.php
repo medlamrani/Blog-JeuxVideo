@@ -67,32 +67,32 @@ class News extends Entity
         $this->updateDate = $updateDate;
     }
 
-    public function id()
+    public function getId()
     {
         return $this->id;
     }
 
-    public function userId()
+    public function getUserId()
     {
         return $this->userId;
     }
 
-    public function title()
+    public function getTitle()
     {
         return $this->title;
     }
 
-    public function content()
+    public function getContent()
     {
         return $this->content;
     }
 
-    public function addDate()
+    public function getAddDate()
     {
         return $this->addDate;
     }
 
-    public function updateDate()
+    public function getUpdateDate()
     {
         return $this->updateDate;
     }

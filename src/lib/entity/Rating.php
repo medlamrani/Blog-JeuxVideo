@@ -18,12 +18,12 @@ class Rating extends Entity
         $this->rate = $rate;
     }
 
-    public function id()
+    public function getId()
     {
         return $this->id;
     }
 
-    public function rate()
+    public function getRate()
     {
         return $this->rate;
     }

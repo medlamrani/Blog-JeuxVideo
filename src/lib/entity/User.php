@@ -48,37 +48,37 @@ class User extends Entity
         $this->password = $password;
     }
 
-    public function id()
+    public function getId()
     {
         return $this->id;
     }
 
-    public function roleId()
+    public function getRoleId()
     {
         return $this->roleId;
     }
 
-    public function username()
+    public function getUsername()
     {
         return $this->username;
     }
 
-    public function name()
+    public function getName()
     {
         return $this->name;
     }
 
-    public function lastname()
+    public function getLastname()
     {
         return $this->lastname;
     }
 
-    public function email()
+    public function getEmail()
     {
         return $this->email;
     }
 
-    public function password()
+    public function getPassword()
     {
         return $this->password;
     }

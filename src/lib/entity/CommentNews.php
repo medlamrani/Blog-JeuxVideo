@@ -47,32 +47,32 @@ class CommentNews extends Entity
         $this->commentDate = $commentDate;
     }
 
-    public function id()
+    public function getId()
     {
         return $this->id;
     }
 
-    public function newsId()
+    public function getNewsId()
     {
         return $this->newsId;
     }
 
-    public function userId()
+    public function getUserId()
     {
         return $this->userId;
     }
     
-    public function content()
+    public function getContent()
     {
         return $this->content;
     }
 
-    public function report()
+    public function getReport()
     {
         return $this->report;
     }
 
-    public function commentDate()
+    public function getCommentDate()
     {
         return $this->commentDate;
     }
