@@ -25,6 +25,8 @@ class Controller
     public function listOfGames()
     {
         $gameManager = new model\GameManager();
+        $listOfGames = $gameManager->listOfGames();
+
         require('src/views/front/games.php');
     }
 

@@ -24,19 +24,31 @@
                 <label for="resume" >Resume :</label>
                 <textarea class="form-control" id="resume" name="resume" rows="3"></textarea>
 
-                <label for="content" >Platform :</label>
-                <select class="form-control">
+                <label for="platform" >Platform :</label>
+                <select name="platform" class="form-control">
                     <?php
-                        foreach($gameManager->listPlatform() as $platform)
+                        foreach($listPlatform as $platform)
                         {  
-                            echo '<option value="' ,$platform->platform(),'">',$platform->platform(),'  </option>';
+                            echo '<option value="' ,$platform->getId(),'">',$platform->platform(),'  </option>';
                         }
                     ?>
                 </select>
 
+
                 <label for="editor" >Editeur :</label>
-                <input type="text" name="editor" class="form-control" value=""/>
-                
+                <select name="editor" class="form-control">
+                    <?php
+                        foreach($listEditor as $editor)
+                        {  
+                            echo '<option value="' ,$editor->getId(),'">',$editor->editor(),'  </option>';
+                        }
+                    ?>
+                </select>
+
+
+                <label for="releaseDate"> Date de sortie : </label>
+                <input type="date" name="releaseDate" class="form-control" />     
+
                 <input type="submit" value="Ajouter" name="addpost" class="btn btn-lg btn-primary btn-block mt-3"/>
             </form>
         </div>

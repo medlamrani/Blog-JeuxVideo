@@ -148,9 +148,9 @@ class AdminController
             $game = new entity\Game(
                 [
                     'name' => $_POST['name'],
-                    'resume' => $_POST['resume'],
-                    'platformId' => $_POST['platform'],
-                    'editorId' => $_POST['editor'],
+                    'resume' => $_POST['resume'],                  
+                    'platform' => new entity\Platform(['id' => $_POST['platform']]),
+                    'editor' => new entity\Editor(['id' => $_POST['editor']]),
                     'releaseDate' => $_POST['releaseDate']
                 ]
             );
@@ -160,6 +160,9 @@ class AdminController
         }
         else
         {
+            $listPlatform = $gameManager->listPlatform(); 
+            $listEditor = $gameManager->listEditor();
+
             require('src/views/back/addGame.php');
         }       
     }

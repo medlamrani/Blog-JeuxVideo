@@ -6,6 +6,7 @@ namespace Project\lib\model;
 use  Project\lib\model;
 use  Project\lib\entity\Game;
 use  Project\lib\entity\Platform;
+use  PDO;
 
 
 class GameManager extends DBConnect
@@ -13,15 +14,16 @@ class GameManager extends DBConnect
     public function addGame(Game $game)
     {
         // Ajouter un jeu
+        var_dump($game);
         $sql = "INSERT INTO game(name, resume,  platform_id, editor_id, release_date)
         VALUES(:name, :resume, :platform_id, :editor_id, :release_date)";
         $req = $this->connect()->prepare($sql);
 
-        $req->bindValue(':name', $game->name());
-        $req->bindValue(':resume', $game->resume());
-        $req->bindValue(':platform_id', $game->platformId());
-        $req->bindValue(':editor_id', $game->editorId());
-        $req->bindValue(':release_date', $game->releaseDate());
+        $req->bindValue(':name', $game->getName());
+        $req->bindValue(':resume', $game->getResume());
+        $req->bindValue(':platform_id', $game->getPlatform()->getId());
+        $req->bindValue(':editor_id', $game->getEditor()->getId());
+        $req->bindValue(':release_date', $game->getReleaseDate());
 
         $req->execute();
  
@@ -52,9 +54,8 @@ class GameManager extends DBConnect
     public function listPlatform()
     {
         $sql = "SELECT * FROM platform";
-        $req = $this->connect()->prepare($sql);
-        $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Platform');
-        $req->execute();
+        $req = $this->connect()->query($sql);
+        $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Project\lib\entity\Platform');
 
         $listPlatform = $req->fetchAll();
 
@@ -63,9 +64,32 @@ class GameManager extends DBConnect
         return $listPlatform;
     }
 
-    public function listOfGame()
+    public function listEditor()
+    {
+        $sql = "SELECT * FROM editor";
+        $req = $this->connect()->query($sql);
+        $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Project\lib\entity\Editor');
+
+        $listEditor = $req->fetchAll();
+
+        $req->closeCursor();
+
+        return $listEditor;
+    }
+
+    public function listOfGames()
     {
         // La liste des jeux
+        $sql = 'SELECT * FROM game ORDER BY id DESC';
+
+        $req = $this->connect()->query($sql);  
+        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Project\lib\entity\Game');
+        
+        $listGames = $req->fetchAll();
+
+        $req->closeCursor();
+
+        return $listGames;
     }
 
     public function game()

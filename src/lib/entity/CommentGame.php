@@ -2,7 +2,7 @@
 
 namespace Project\lib\entity;
 
-class CommentGame 
+class CommentGame extends Entity
 {
     protected $id,
               $gameId,
@@ -11,26 +11,6 @@ class CommentGame
               $report,
               $commentDate;
 
-    public function __construct( $values = [])
-    {    
-        if (!empty($values))
-        {
-            $this->hydrate($values);
-        }
-    }
-
-    public function hydrate($datas)
-    {
-        foreach ($datas as $attribut => $value)
-        {
-            $method = 'set'.ucfirst($attribut);
-
-            if (is_callable([$this, $method]))
-            {
-                $this->$method($value);
-            }
-        }
-    } 
     
     public function isValid()
     {
@@ -67,32 +47,32 @@ class CommentGame
         $this->commentDate = $commentDate;
     }
 
-    public function id()
+    public function getId()
     {
         return $this->id;
     }
 
-    public function gameId()
+    public function getGameId()
     {
         return $this->gameId;
     }
 
-    public function userId()
+    public function getUserId()
     {
         return $this->userId;
     }
     
-    public function content()
+    public function getContent()
     {
         return $this->content;
     }
 
-    public function report()
+    public function getReport()
     {
         return $this->report;
     }
 
-    public function commentDate()
+    public function getCommentDate()
     {
         return $this->commentDate;
     }

@@ -2,37 +2,16 @@
 
 namespace Project\lib\entity;
 
-
-class Game 
+class Game extends Entity
 {
     protected $id,
               $name,
               $resume,
-              $platformId,
-              $editorId,
+              $platform,
+              $editor,
               $releaseDate;
               
-    public function __construct( $values = [])
-    {    
-        if (!empty($values))
-        {
-            $this->hydrate($values);
-        }
-    }
 
-    public function hydrate($datas)
-    {
-        foreach ($datas as $attribut => $value)
-        {
-            $method = 'set'.ucfirst($attribut);
-
-            if (is_callable([$this, $method]))
-            {
-                $this->$method($value);
-            }
-        }
-    }  
-    
     public function isNew()
     {
         return empty($this->id);
@@ -53,14 +32,14 @@ class Game
         $this->resume = $resume;
     }
 
-    public function setPlatformId($platformId)
+    public function setPlatform($platform)
     {
-        $this->platformId = (int) $platformId;
+        $this->platform = $platform;
     }
 
-    public function setEditorId ($editorId)
+    public function setEditor($editor)
     {
-        $this->editorId = (int) $editorId;
+        $this->editor = $editor;
     }
 
     public function setReleaseDate($releaseDate)
@@ -68,32 +47,32 @@ class Game
         $this->releaseDate = $releaseDate;
     }
 
-    public function id()
+    public function getId()
     {
         return $this->id;
     }
 
-    public function name()
+    public function getName()
     {
         return $this->name;
     }
 
-    public function resume()
+    public function getResume()
     {
         return $this->resume;
     }
 
-    public function platformId()
+    public function getPlatform()
     {
-        return $this->platformId;
+        return $this->platform;
     }
 
-    public function editorId()
+    public function getEditor()
     {
-        return $this->editorId;
+        return $this->editor;
     }
 
-    public function releaseDate()
+    public function getReleaseDate()
     {
         return $this->releaseDate;
     }

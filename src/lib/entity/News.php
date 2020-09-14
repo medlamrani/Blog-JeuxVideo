@@ -2,36 +2,20 @@
 
 namespace Project\lib\entity;
 
-class News
+class News extends Entity
 {
-    protected $id,
-              $user,
+    protected $errors = [],
+              $id,
+              $userId,
               $title,
               $content,
               $addDate,
               $updateDate;
 
-    public function __construct( $values )
-    {    
-        var_dump($values);
-        if (!empty($values))
-        {
-            $this->hydrate($values);
-        }
-    }
-
-    public function hydrate($datas)
-    {
-        foreach ($datas as $attribut => $value)
-        {
-            $method = 'set'.ucfirst($attribut);
-
-            if (is_callable([$this, $method]))
-            {
-                $this->$method($value);
-            }
-        }
-    }      
+    const AUTHOR_INVALIDE = 1;
+    const TITLE_INVALIDE = 2;
+    const CONTENT_INVALIDE = 3;     
+    
     
     public function isNew()
     {
@@ -55,11 +39,21 @@ class News
 
     public function setTitle($title)
     {
+        if (is_string($title) || empty($title))
+        {
+            $this->errors[] = self::TITLE_INVALIDE;
+        }
+
         $this->title = $title;
     }
 
     public function setContent($content)
     {
+        if (is_string($content) || empty($content))
+        {
+            $this->errors[] = self::CONTENT_INVALIDE;
+        }
+
         $this->content = $content;
     }
 

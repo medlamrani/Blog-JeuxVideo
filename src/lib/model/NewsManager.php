@@ -59,12 +59,12 @@ class NewsManager extends DBConnect
         }
 
         $req = $this->connect()->query($sql);  
-        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'News');
+        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Project\lib\entity\News');
         
 
 
         $listNews = $req->fetchAll();
-var_dump($listNews);
+
 
         $req->closeCursor();
 

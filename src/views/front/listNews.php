@@ -22,8 +22,7 @@
                 
                 <?php 
                 foreach ($listOfNews as $news)
-                {
-                    var_dump($news);
+                {                 
                 ?>
                     <article class="mb-5 mt-5">
                     <?php
