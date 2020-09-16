@@ -26,22 +26,22 @@
                 ?>
                     <article class="mb-5 mt-5">
                     <?php
-                    if (strlen($news->content()) <= 400)
+                    if (strlen($news->getContent()) <= 400)
                     {
-                      $content = $news->content();
+                      $content = $news->getContent();
                     }
                     
                     else
                     {
-                      $debut = substr($news->content(), 0, 400);
+                      $debut = substr($news->getContent(), 0, 400);
                       $debut = substr($debut, 0, strrpos($debut, ' ')) . '...';
                       
                       $content = $debut;
                     }
                     
-                    echo '<h4><a href="index.php?action=post&amp;id=', $news->id(), '">', $news->title(), '</a></h4>', "\n",
+                    echo '<h4><a href="index.php?action=actu&amp;id=', $news->getId(), '">', $news->getTitle(), '</a></h4>', "\n",
                         '<p>', nl2br($content), '</p>',
-                        '<a href="index.php?action=post&amp;id=', $news->id(),'" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Lire la suite</a>';
+                        '<a href="index.php?action=actu&amp;id=', $news->getId(),'" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Lire la suite</a>';
                   ?>
                   <hr>
                     </article>

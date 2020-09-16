@@ -25,7 +25,8 @@ class GameManager extends DBConnect
         $req->bindValue(':release_date', $game->getReleaseDate());
 
         $req->execute();
- 
+        
+        $_SESSION['message'] = 'Jeu ajoute avec succes !';
     }
 
     public function deleteGame($id)
@@ -33,6 +34,8 @@ class GameManager extends DBConnect
         // Supprimer le jeu
         $sql = "DELETE FROM game WHERE id = ".(int) $id;
         $req = $this->connect()->exec($sql);
+
+        $_SESSION['message'] = 'Le jeu a ete supprimer !';
     }
 
     public function updateGame(Game $game)
@@ -46,10 +49,12 @@ class GameManager extends DBConnect
         $req->bindValue(':platform_id', $game->getPlatform()->getId());
         $req->bindValue(':editor_id', $game->getEditor()->getId());
         $req->bindValue(':release_date', $game->getReleaseDate());
-        
+
         $req->bindValue(':id', $game->id(), PDO::PARAM_INT);
         
         $req->execute();
+
+        $_SESSION['message'] = 'Jeu modifie avec succes !';
     }
 
     public function listPlatform()
@@ -82,6 +87,7 @@ class GameManager extends DBConnect
     {
         // La liste des jeux
         $sql = 'SELECT * FROM game ORDER BY id DESC';
+        
 
         $req = $this->connect()->query($sql);  
         $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Project\lib\entity\Game');
@@ -93,9 +99,40 @@ class GameManager extends DBConnect
         return $listGames;
     }
 
-    public function game()
+    public function lastGame()
+    {
+        $sql = 'SELECT * FROM game ORDER BY id DESC LIMIT 1';
+
+        $req = $this->connect()->query($sql);  
+        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Project\lib\entity\Game');
+        
+        $lastGame = $req->fetchAll();
+
+        $req->closeCursor();
+
+        return $lastGames;
+    }
+
+    public function game($id)
     {
         // afficher un jeu 
+        $sql = "SELECT * FROM game 
+        LEFT JOIN platform ON platform_id = platform.id
+        LEFT JOIN editor ON editor_id = editor.id 
+        WHERE game.id = :id";
+
+        $req = $this->connect()->prepare($sql);
+
+        $req->bindValue(':id', (int) $id, PDO::PARAM_INT);
+        $req->execute();
+
+        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Project\lib\entity\Game');
+
+        $game = $req->fetch();
+
+        $game->setReleaseDate(new \DateTime($game->getReleaseDate()));
+
+        return $game;
     }
 
     public function rateGame()

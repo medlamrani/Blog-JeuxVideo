@@ -24,10 +24,36 @@
                 <a class="navlink" href="index.php?action=">Top 5</a>             
             </div>
             <div class="collapse navbar-collapse ml-5" >
-                <a class="navlink" href="index.php">Inscription</a>
-                <a class="navlink" href="index.php">Se Connecter</a>
+            <?php
+            if(empty($_SESSION['id']))
+            {
+            ?>
+                <a class="navlink" href="index.php?action=inscription">Inscription</a>
+                <a class="navlink" href="index.php?action=login">Se Connecter</a>  
+            <?php      
+            }
+            else
+            {
+                ?>
+                <a class="navlink" href="index.php?action=monprofil"><?php echo 'Bonjour '. $_SESSION['username'];?></a>
+                <a class="navlink" href="index.php?action=logout">
+                    <img src="src/public/image/logout.png" width="30" height="30" alt="" loading="lazy"> 
+                </a>
+            <?php    
+            }
+                
+            ?>    
             </div>
         </nav>  
+
+        <?php if(isset($_SESSION['message'])) : ?> 
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong><?php echo $_SESSION['message'] ;?></strong> 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php endif; ?>
         
         <?= $header ?>   
     

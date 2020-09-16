@@ -84,8 +84,8 @@ class NewsManager extends DBConnect
 
         $news = $req->fetch();
 
-        $news->setAddDate(new DateTime($news->addDate()));
-        $news->setUpdateDate(new DateTime($news->updateDate()));
+        $news->setAddDate(new \DateTime($news->getAddDate()));
+        $news->setUpdateDate(new \DateTime($news->getUpdateDate()));
 
         return $news;
     }

@@ -9,17 +9,74 @@ class Controller
 {
     public function home()
     {
+        $gameManager = new model\GameManager();
         require('src/views/front/home.php');
+    }
+
+    public function isUserConnected()
+    {
+        if (empty($_SESSION['id']))
+        {
+            header('Location: index.php?action=login');
+            exit(); 
+        }
     }
 
     public function connect()
     {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        
+        $user = new model\UserManager();
 
+        $result = $user->userConnect($username, $password);
+
+        if($result == true)
+        {
+            $newsManager = new model\NewsManager();
+            $gameManager = new model\GameManager();
+
+            require('src/views/front/home.php'); 
+        }
+        else
+        {              
+            require('src/views/front/userConnect.php');         
+        }
     }
 
     public function inscription()
     {
+        $userManager = new model\UserManager();
 
+        if(isset($_POST['username']))
+        {
+            $pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+            $user = new entity\User(
+                [
+                    'id' => 0,
+                    'roleId' => 2,
+                    'username' => $_POST['username'],
+                    'name' => $_POST['name'],
+                    'lastname' => $_POST['lastname'],
+                    'email' => $_POST['email'],
+                    'password' => $pass_hache
+                ]
+            );
+
+            $userManager->userInscription($user);
+            $this->home();                    
+        }
+        else
+        {
+            require('src/views/front/inscription.php');
+        }
+    }
+
+    public function logOut()
+    {
+        session_destroy();
+        header('Location: index.php');
     }
 
     public function listOfGames()
@@ -33,11 +90,11 @@ class Controller
     public function game()
     {
         $gameManager = new model\GameManager();
-        $commentGame = new model\CommentGame();
+       // $commentGame = new model\CommentGame();
 
         $game = $gameManager->game($_GET['id']);
-        $comment = $commentGame->listOfComment($_GET['id']);
-
+       // $comment = $commentGame->listOfComment($_GET['id']);
+        var_dump($game);
         require('src/views/front/game.php');
     }
 
@@ -52,10 +109,10 @@ class Controller
     public function news()
     {
         $newsManager = new model\NewsManager();
-        $commentNews = new model\CommentNews();
+       // $commentNews = new model\CommentNews();
 
         $news = $newsManager->news($_GET['id']);
-        $comment = $commentNews->listOfComment($_GET['id']);
+      //  $comment = $commentNews->listOfComment($_GET['id']);
 
         require('src/views/front/news.php');
     }

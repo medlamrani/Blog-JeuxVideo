@@ -65,8 +65,6 @@ class AdminController
                 ]
             );
 
-            var_dump($user);
-
             $userManager->addAdmin($user);
             require('src/views/back/adminConnect.php');                       
         }

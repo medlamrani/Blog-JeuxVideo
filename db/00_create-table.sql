@@ -47,9 +47,10 @@ CREATE TABLE IF NOT EXISTS `platform` (
 
 
 CREATE TABLE IF NOT EXISTS `rating` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
   `game_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
+  `rate` int(11) NOT NULL,
+  PRIMARY KEY (`user_id`, `game_id`),
   CONSTRAINT FK_GameRating FOREIGN KEY (game_id) REFERENCES game(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 

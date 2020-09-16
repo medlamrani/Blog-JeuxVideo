@@ -29,9 +29,9 @@
                         
                         $resume = $game->getResume();
                     
-                        echo '<h4><a href="index.php?action=post&amp;id=', $game->getId(), '">', $game->getName(), '</a></h4>', "\n",
+                        echo '<h4><a href="index.php?action=game&amp;id=', $game->getId(), '">', $game->getName(), '</a></h4>', "\n",
                         '<p>', nl2br($resume), '</p>',
-                        '<a href="index.php?action=post&amp;id=', $game->getId(),'" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Lire la suite</a>';
+                        '<a href="index.php?action=game&amp;id=', $game->getId(),'" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Lire la suite</a>';
                         ?>
                         <hr>
                     </article>

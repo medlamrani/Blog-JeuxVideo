@@ -14,9 +14,9 @@ class CommentGame extends DBConnect
 
         $req = $this->connect()->prepare($sql);
 
-        $req->bindValue(':game_id', $commentGame->gameId(), \PDO::PARAM_INT);
-        $req->bindValue(':user_id', $commentGame->userId());
-        $req->bindValue(':content', $commentGame->content());
+        $req->bindValue(':game_id', $commentGame->getGameId(), \PDO::PARAM_INT);
+        $req->bindValue(':user_id', $commentGame->getUserId());
+        $req->bindValue(':content', $commentGame->getContent());
 
         $req->execute();
 

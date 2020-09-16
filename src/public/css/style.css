@@ -7,6 +7,7 @@ body {
     width: 900px;
     min-width: 700px;
     margin: auto;
+    
   }
   
   .mynav {
@@ -18,12 +19,14 @@ body {
   
   .masthead {
     width: 100%;
-    min-width: 700px;
+    max-width: 900px;
     height: 400px;
     padding-top: 0;
     padding-bottom: 0;
     margin: 80px auto;
-    background-color: coral;
+    background-image: url(../image/frontgames.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
   }
 
   .navlink {
@@ -34,5 +37,18 @@ body {
 
   .login-bloc {
     height: 100%;
+    margin-top: 100px;
+  }
+
+  .login-bloc {
+    height: 100%;
     margin-top: 200px;
+  }
+  
+  .login {
+    width: 100%;
+    max-width: 500px;
+    padding: 25px;
+    margin: auto;
+    background-color: whitesmoke;
   }

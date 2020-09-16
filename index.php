@@ -1,5 +1,7 @@
 <?php 
 
+session_start();
+
 require_once realpath("vendor/autoload.php");
 
 use Project\controller;
@@ -16,13 +18,47 @@ try
         {
             $controller->home();
         }
+        elseif($_GET['action'] == 'inscription')
+        {
+            $controller->inscription();
+        }
+        elseif($_GET['action'] == 'login')
+        {
+            $controller->connect();
+        }
+        elseif($_GET['action'] == 'logout')
+        {
+            $controller->logOut();
+        }
         elseif($_GET['action'] == 'games')
         {
             $controller->listOfGames();
         }
+        elseif($_GET['action'] == 'game')
+        {
+            if(isset($_GET['id']) && $_GET['id'] > 0)
+            {
+                $controller->game();
+            }
+            else 
+            {
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
+        }
         elseif($_GET['action'] == 'actualites')
         {
             $controller->listOfNews();
+        }
+        elseif($_GET['action'] == 'actu')
+        {
+            if(isset($_GET['id']) && $_GET['id'] > 0)
+            {
+                $controller->news();
+            }
+            else 
+            {
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
         }
 
         elseif($_GET['action'] == 'addAdmin')
@@ -41,7 +77,7 @@ try
         elseif($_GET['action'] == 'addNews')
         {
             $adminController->addNews();
-
+        }    
         elseif($_GET['action'] == 'addPlatform')
         {
             $adminController->addPlatform();
@@ -59,3 +95,5 @@ catch(Exception $e)
     echo 'Erreur : ' . $e->getMessage();
 }
 
+
+unset($_SESSION['message']);

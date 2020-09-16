@@ -7,8 +7,6 @@ abstract class Entity
 {
     public function __construct( $values = [] )
     {    
-        var_dump($values);
-        
         if (!empty($values))
         {
             $this->hydrate($values);

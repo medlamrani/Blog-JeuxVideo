@@ -13,9 +13,6 @@
 <?php ob_start(); ?>
 
 
-    <div>
-        <h2>Games</h2>
-    </div>
 
 <?php $content = ob_get_clean(); ?>
 
