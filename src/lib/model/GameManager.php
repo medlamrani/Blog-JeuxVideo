@@ -86,7 +86,10 @@ class GameManager extends DBConnect
     public function listOfGames()
     {
         // La liste des jeux
-        $sql = 'SELECT * FROM game ORDER BY id DESC';
+        $sql = 'SELECT * FROM game
+        LEFT JOIN platform ON platform_id = platform.id
+        LEFT JOIN editor ON editor_id = editor.id
+        ORDER BY game.id DESC';
         
 
         $req = $this->connect()->query($sql);  

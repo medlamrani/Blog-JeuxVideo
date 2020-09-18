@@ -24,19 +24,22 @@ class Controller
 
     public function connect()
     {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        
-        $user = new model\UserManager();
-
-        $result = $user->userConnect($username, $password);
-
-        if($result == true)
+        if(isset($_POST['username']))
         {
-            $newsManager = new model\NewsManager();
-            $gameManager = new model\GameManager();
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            
+            $user = new model\UserManager();
 
-            require('src/views/front/home.php'); 
+            $result = $user->userConnect($username, $password);
+
+            if($result == true)
+            {
+                $newsManager = new model\NewsManager();
+                $gameManager = new model\GameManager();
+
+                require('src/views/front/home.php'); 
+            }        
         }
         else
         {              
@@ -90,10 +93,11 @@ class Controller
     public function game()
     {
         $gameManager = new model\GameManager();
-       // $commentGame = new model\CommentGame();
+        $commentGame = new model\CommentGameManager();
 
         $game = $gameManager->game($_GET['id']);
-       // $comment = $commentGame->listOfComment($_GET['id']);
+        $listOfComments = $commentGame->listOfComment($_GET['id']);
+
         var_dump($game);
         require('src/views/front/game.php');
     }
@@ -109,11 +113,73 @@ class Controller
     public function news()
     {
         $newsManager = new model\NewsManager();
-       // $commentNews = new model\CommentNews();
+        $commentNews = new model\CommentNewsManager();
 
         $news = $newsManager->news($_GET['id']);
-      //  $comment = $commentNews->listOfComment($_GET['id']);
+        $listOfComments = $commentNews->listOfComment($_GET['id']);
+
+        var_dump($listOfComments);
 
         require('src/views/front/news.php');
     }
+
+   
+    public function addComment($newsId)
+    {
+        $commentManager = new model\CommentNewsManager();
+        var_dump($newsId);
+
+        if(!empty($_SESSION['id']))
+        {           
+            $commentNews = new entity\CommentNews(
+                [
+                    'newsId' => $_GET['id'],
+                    'user' => new entity\User(
+                        [
+                            'id' => $_SESSION['id'], 
+                            'username' => $_SESSION['username']
+                        ]),
+                    'content' => $_POST['content']
+                ]
+            );
+            var_dump($commentNews);
+            $commentManager->save($commentNews);
+
+            
+        }
+        else
+        {
+            
+            $_SESSION['message'] = 'Vous devez etre connecter pour laisser un commentaire';
+            header("location:".  $_SERVER['HTTP_REFERER']); 
+        }       
+    }
+
+    public function commentGame($gameId)
+    {
+        $commentManager = new model\CommentGameManager();
+
+        if(!empty($_SESSION['id']))
+        {           
+            $commentGame = new entity\CommentGame(
+                [
+                    'gameId' => $_GET['id'],
+                    'user' => new entity\User(
+                        [
+                            'id' => $_SESSION['id'], 
+                            'username' => $_SESSION['username']
+                        ]),
+                    'content' => $_POST['content']
+                ]
+            );
+            var_dump($commentGame);
+            $commentManager->save($commentGame);  
+        }
+        else
+        {          
+            $_SESSION['message'] = 'Vous devez etre connecter pour laisser un commentaire';
+            header("location:".  $_SERVER['HTTP_REFERER']); 
+        }       
+    }
+
 }

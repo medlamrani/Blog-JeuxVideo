@@ -3,8 +3,9 @@
 namespace Project\lib\model;
 
 use  Project\lib\model;
+use  Project\lib\entity\CommentNews;
 
-class CommentNews extends DBConnect
+class CommentNewsManager extends DBConnect
 {
     public function commentNews(CommentNews $commentNews)
     {
@@ -14,13 +15,13 @@ class CommentNews extends DBConnect
 
         $req = $this->connect()->prepare($sql);
 
-        $req->bindValue(':news_id', $commentGame->newsId(), \PDO::PARAM_INT);
-        $req->bindValue(':user_id', $commentGame->userId());
-        $req->bindValue(':content', $commentGame->content());
+        $req->bindValue(':news_id', $commentNews->getNewsId(), \PDO::PARAM_INT);
+        $req->bindValue(':user_id', $commentNews->getUser()->getId());
+        $req->bindValue(':content', $commentNews->getContent());
 
         $req->execute();
 
-        $_SESSIOn['message'] = 'Commentaire Ajoute !';
+        $_SESSION['message'] = 'Commentaire Ajoute !';
         
     }
 
@@ -34,17 +35,33 @@ class CommentNews extends DBConnect
 
     public function listOfComment($newsId)
     {
-        $sql = 'SELECT id, news_id, user_id, content, report, commentDate FROM commentGame WHERE game_id = :game_id';
+        $sql = 'SELECT * FROM comment_news INNER JOIN user ON user_id = user.id WHERE news_id = :news_id';
   
         $req = $this->connect()->prepare($sql);
         $req->bindValue(':news_id', $newsId, \PDO::PARAM_INT);
         $req->execute();
     
-        $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Comment');
+        $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Project\lib\entity\CommentNews');
     
         $comments = $req->fetchAll();
 
         return $comments;
+    }
+
+    public function comment($id)
+    {
+        $sql = 'SELECT * FROM comment_news LEFT JOIN user ON user_id = user.id WHERE comment_news.id = :id';
+
+        $req = $this->connect()->prepare($sql);
+
+        $req->bindValue(':id', (int) $id, \PDO::PARAM_INT);
+        $req->execute();
+
+        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Project\lib\entity\CommentNews');
+
+        $comment = $req->fetch();
+
+        return $comment;
     }
 
     public function report($id)
@@ -68,9 +85,21 @@ class CommentNews extends DBConnect
         $sql= "SELECT * FROM comment_news WHERE report = 1";
         $req = $this->connect()->query($sql);
 
-        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, '\Entity\Comment');
+        $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Project\lib\entity\Comment');
         $listreport = $req->fetchAll();
 
         return $listreport;
+    }
+
+    public function save(CommentNews $commentNews)
+    {
+        if($commentNews->isValid())
+        {
+            $this->commentNews($commentNews);
+        }
+        else
+        {
+            $_SESSION['message'] = 'Le commentaire doit etre valide pour etre enregistree'; 
+        }
     }
 }

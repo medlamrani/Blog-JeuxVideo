@@ -34,6 +34,8 @@
                         '<a href="index.php?action=game&amp;id=', $game->getId(),'" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Lire la suite</a>';
                         ?>
                         <hr>
+                        <div class="text-justify article-text text-reader"><?= $game->getPlatform() ?></div>
+                        <div class="text-justify article-text text-reader"><?= $game->getEditor() ?></div>
                     </article>
                 <?php
                 }
