@@ -3,10 +3,11 @@
 <?php ob_start(); ?>
 
     <header class="masthead">
-        <div>
-            <h1>Welcome to Gaming Univers</h1>
-        </div>
     </header>
+
+    <div class="bloc">
+        <h2 class="text-center" style="36px">Les Actualites</h2>
+    </div>
 
 <?php $header = ob_get_clean(); ?>
 
@@ -16,15 +17,11 @@
     <div class="container bg-white shadow">
         <div class="row">
             <div class="col-10 offset-1 mb-5 mt-5">
-                <h2 class="text-justify" style="36px">Actu</h2>
-                <br />
-                <hr>
-                
                 <?php 
                 foreach ($listOfNews as $news)
                 {                 
                 ?>
-                    <article class="mb-5 mt-5">
+                    <article class="bloc-news">
                     <?php
                     if (strlen($news->getContent()) <= 400)
                     {
@@ -38,13 +35,14 @@
                       
                       $content = $debut;
                     }
-                    
-                    echo '<h4><a href="index.php?action=actu&amp;id=', $news->getId(), '">', $news->getTitle(), '</a></h4>', "\n",
-                        '<p>', nl2br($content), '</p>',
-                        '<a href="index.php?action=actu&amp;id=', $news->getId(),'" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Lire la suite</a>';
                   ?>
-                  <hr>
+                  
+                        <h3 class="card-title text-center"> <?= $news->getTitle() ?></h3>
+                        <p class="card-text"><?= nl2br($content) ?></p>
+                        <a href="index.php?action=actu&amp;id=<?= $news->getId() ?>" class="btn btn-info btn-lg active" role="button" aria-pressed="true">Lire la suite</a>
                     </article>
+
+                    <hr>
                 <?php
                 }
             ?>

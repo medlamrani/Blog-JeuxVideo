@@ -3,10 +3,11 @@
 <?php ob_start(); ?>
 
     <header class="masthead">
-        <div>
-            <h1>Welcome to Gaming Univers</h1>
-        </div>
+        
     </header>
+    <div class="container bloc">
+        <h1 class="text-center">Bienvenue a l'univers du Gaming</h1>
+    </div>
 
 <?php $header = ob_get_clean(); ?>
 

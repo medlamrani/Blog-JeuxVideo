@@ -34,14 +34,14 @@ CREATE TABLE IF NOT EXISTS `game` (
 
 CREATE TABLE IF NOT EXISTS `editor` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `editor` varchar(255) NOT NULL,
+  `editor_name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
 CREATE TABLE IF NOT EXISTS `platform` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `platform` varchar(255) NOT NULL,
+  `platform_name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
