@@ -37,7 +37,6 @@
             <?php
             foreach ($listOfComments as $comment)
             {
-                var_dump($comment->getUser());
             ?>
                 <div class="col-10 offset-1 mb-5 mt-5">
                 

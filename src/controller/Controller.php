@@ -87,6 +87,8 @@ class Controller
         $gameManager = new model\GameManager();
         $listOfGames = $gameManager->listOfGames();
 
+        var_dump($listOfGames);
+
         require('src/views/front/games.php');
     }
 
@@ -98,7 +100,7 @@ class Controller
         $game = $gameManager->game($_GET['id']);
         $listOfComments = $commentGame->listOfComment($_GET['id']);
 
-        var_dump($game);
+        var_dump($listOfComments);
         require('src/views/front/game.php');
     }
 
@@ -145,7 +147,8 @@ class Controller
             var_dump($commentNews);
             $commentManager->save($commentNews);
 
-            
+            header("location:".  $_SERVER['HTTP_REFERER']); 
+            $_SESSION['message'] = 'Commentaire ajoute';
         }
         else
         {

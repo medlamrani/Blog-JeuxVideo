@@ -29,7 +29,7 @@ class CommentGame extends Entity
 
     public function setUser($user)
     {
-        $this->userId = $user;
+        $this->user = $user;
     }
 
     public function setContent($content)

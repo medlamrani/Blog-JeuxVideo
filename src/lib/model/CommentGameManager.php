@@ -35,13 +35,16 @@ class CommentGameManager extends DBConnect
 
     public function listOfComment($gameId)
     {
-        $sql = 'SELECT * FROM comment_game LEFT JOIN user ON user_id = user.id WHERE game_id = :game_id';
+        //$sql = 'SELECT * FROM comment_game LEFT JOIN user ON user_id = user.id WHERE game_id = :game_id';
+        $sql = 'SELECT comment_game.id, game_id as gameId, user.username as user, content, report, commentDate FROM comment_game 
+                INNER JOIN user ON comment_game.user_id = user.id 
+                WHERE game_id = :game_id';
   
         $req = $this->connect()->prepare($sql);
         $req->bindValue(':game_id', $gameId, \PDO::PARAM_INT);
         $req->execute();
     
-        $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Project\lib\entity\CommentNews');
+        $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Project\lib\entity\CommentGame');
     
         $comments = $req->fetchAll();
 

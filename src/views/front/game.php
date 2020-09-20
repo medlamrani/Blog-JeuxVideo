@@ -30,7 +30,7 @@
             </div>
         </div>
     </section>
-
+<?= var_dump($game) ?>
 
     <a class="btn btn-primary btn-lg active" href="index.php?action=games">Retour</a>
 
@@ -40,7 +40,7 @@
             <?php
             foreach ($listOfComments as $comment)
             {
-                var_dump($comment);
+                var_dump($game);
             ?>
                 <div class="col-10 offset-1 mb-5 mt-5">
                 
@@ -67,7 +67,7 @@
                             <textarea class="form-control" id="content" name="content" ></textarea>
                         </div>
                         <div>
-                            <input class="btn btn-lg btn-primary btn-block mt-3" type="submit" name="addcomment" value="ajouter" />
+                            <input class="btn btn-lg btn-primary btn-block mt-3" type="submit" name="commentGame" value="ajouter" />
                         </div>
                     </form>
                 </div>    

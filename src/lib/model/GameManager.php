@@ -59,7 +59,7 @@ class GameManager extends DBConnect
 
     public function listPlatform()
     {
-        $sql = "SELECT * FROM platform";
+        $sql = "SELECT id, platform_name FROM platform";
         $req = $this->connect()->query($sql);
         $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Project\lib\entity\Platform');
 
@@ -72,7 +72,7 @@ class GameManager extends DBConnect
 
     public function listEditor()
     {
-        $sql = "SELECT * FROM editor";
+        $sql = "SELECT id, editor_name FROM editor";
         $req = $this->connect()->query($sql);
         $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Project\lib\entity\Editor');
 
@@ -86,9 +86,9 @@ class GameManager extends DBConnect
     public function listOfGames()
     {
         // La liste des jeux
-        $sql = 'SELECT * FROM game
-        LEFT JOIN platform ON platform_id = platform.id
-        LEFT JOIN editor ON editor_id = editor.id
+        $sql = 'SELECT game.id, name, resume, platform_id as platform, editor_id as editor, release_date FROM game
+        INNER JOIN platform ON platform_id = platform.id
+        INNER JOIN editor ON editor_id = editor.id
         ORDER BY game.id DESC';
         
 
@@ -97,8 +97,12 @@ class GameManager extends DBConnect
         
         $listGames = $req->fetchAll();
 
+        foreach ($listGames as $game) 
+        {
+            $game->setReleaseDate(new \DateTime($game->getReleaseDate()));
+        }
+        
         $req->closeCursor();
-
         return $listGames;
     }
 
@@ -119,9 +123,9 @@ class GameManager extends DBConnect
     public function game($id)
     {
         // afficher un jeu 
-        $sql = "SELECT * FROM game 
-        LEFT JOIN platform ON platform_id = platform.id
-        LEFT JOIN editor ON editor_id = editor.id 
+        $sql = "SELECT game.id, name, resume, platform_id as platform, editor_id as editor, release_date FROM game 
+        INNER JOIN platform ON platform_id = platform.id
+        INNER JOIN editor ON editor_id = editor.id 
         WHERE game.id = :id";
 
         $req = $this->connect()->prepare($sql);

@@ -35,8 +35,10 @@ class CommentNewsManager extends DBConnect
 
     public function listOfComment($newsId)
     {
-        $sql = 'SELECT * FROM comment_news INNER JOIN user ON user_id = user.id WHERE news_id = :news_id';
-  
+        //$sql = 'SELECT * FROM comment_news INNER JOIN news ON comment_news.news_id = news.id INNER JOIN user ON comment_news.user_id = user.id WHERE comment_news.news_id = :news_id ORDER BY commentDate DESC';
+        $sql = 'SELECT comment_news.id, news_id as newsId, user.username as user, content, report, commentDate FROM comment_news 
+        INNER JOIN user ON comment_news.user_id = user.id 
+        WHERE news_id = :news_id';
         $req = $this->connect()->prepare($sql);
         $req->bindValue(':news_id', $newsId, \PDO::PARAM_INT);
         $req->execute();
