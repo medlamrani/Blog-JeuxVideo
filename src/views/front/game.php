@@ -30,7 +30,6 @@
             </div>
         </div>
     </section>
-<?= var_dump($game) ?>
 
     <a class="btn btn-primary btn-lg active" href="index.php?action=games">Retour</a>
 
@@ -40,7 +39,6 @@
             <?php
             foreach ($listOfComments as $comment)
             {
-                var_dump($game);
             ?>
                 <div class="col-10 offset-1 mb-5 mt-5">
                 

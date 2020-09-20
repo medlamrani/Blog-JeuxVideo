@@ -1,6 +1,6 @@
 body {
     font-family: "Lato", sans-serif;
-    
+    background-image: url(../image/gameimage.jpg);
   }
 
   .bloc-home{
@@ -23,10 +23,18 @@ body {
     height: 400px;
     padding-top: 0;
     padding-bottom: 0;
-    margin: 80px auto;
+    margin: 100px auto 0;
     background-image: url(../image/frontgames.jpg);
     background-size: contain;
     background-repeat: no-repeat;
+  }
+
+  .bloc{
+    width: 100%;
+    background-color: whitesmoke;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 10px 10px 10px black;
   }
 
   .navlink {
@@ -39,11 +47,6 @@ body {
     height: 100%;
     margin-top: 100px;
   }
-
-  .login-bloc {
-    height: 100%;
-    margin-top: 200px;
-  }
   
   .login {
     width: 100%;
@@ -52,3 +55,56 @@ body {
     margin: auto;
     background-color: whitesmoke;
   }
+
+  .container-flex {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .game-card
+  {
+    width: 300px;
+    margin: 20px auto;
+    padding: 5px;
+    border-radius: 5%;
+    box-shadow: 10px 10px 10px black;
+    text-align: center;
+    background-color: whitesmoke;
+  }
+
+  .platform
+  {
+    max-width: 200px;
+    background-color: darkcyan;
+    padding: 2px;
+    border: 0.5px solid black;
+    border-radius: 5%;
+    text-align: center;
+    margin: 10px auto;
+  }
+
+  .editor
+  {
+    max-width: 200px;
+    background-color: gainsboro;
+    padding: 2px;
+    border: 0.5px solid black;
+    border-radius: 5%;
+    text-align: center;
+    margin: 10px auto;
+  }
+
+  .bloc-news
+  {
+    width: 100%;
+    background-color: gainsboro;
+    box-shadow: 5px 5px 5px black;
+    padding: 20px;
+    font-size: 20px;
+  }
+
+
+
