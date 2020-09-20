@@ -6,7 +6,7 @@ class CommentGame extends Entity
 {
     protected $id,
               $gameId,
-              $userId,
+              $user,
               $content,
               $report,
               $commentDate;
@@ -27,9 +27,9 @@ class CommentGame extends Entity
         $this->gameId = (int) $gameId;
     }
 
-    public function setUserId($userId)
+    public function setUser($user)
     {
-        $this->userId = (int) $userId;
+        $this->user = $user;
     }
 
     public function setContent($content)
@@ -57,9 +57,9 @@ class CommentGame extends Entity
         return $this->gameId;
     }
 
-    public function getUserId()
+    public function getUser()
     {
-        return $this->userId;
+        return $this->user;
     }
     
     public function getContent()

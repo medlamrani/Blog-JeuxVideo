@@ -5,7 +5,7 @@ namespace Project\lib\entity;
 class Platform extends Entity
 {
     protected $id,
-              $platform;
+              $platformName;
               
 
     public function setId($id)
@@ -13,9 +13,9 @@ class Platform extends Entity
         $this->id = (int) $id;
     } 
     
-    public function setPlatform($platform)
+    public function setPlatformName($platformName)
     {
-        $this->platform = $platform;
+        $this->platformName = $platformName;
     }
 
     public function getId()
@@ -23,8 +23,8 @@ class Platform extends Entity
         return $this->id;
     }
 
-    public function platform()
+    public function getPlatformName()
     {
-        return $this->platform;
+        return $this->platformName;
     }
 }

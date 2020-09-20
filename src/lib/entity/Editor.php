@@ -5,7 +5,7 @@ namespace Project\lib\entity;
 class Editor extends Entity
 {
     protected $id,
-              $editor;
+              $editorName;
               
 
     public function setId($id)
@@ -13,9 +13,9 @@ class Editor extends Entity
         $this->id = (int) $id;
     } 
     
-    public function setEditor($editor)
+    public function setEditorName($editorName)
     {
-        $this->editor = $editor;
+        $this->editorName = $editorName;
     }
 
     public function getId()
@@ -23,8 +23,8 @@ class Editor extends Entity
         return $this->id;
     }
 
-    public function editor()
+    public function getEditorName()
     {
-        return $this->editor;
+        return $this->editorName;
     }
 }

@@ -6,7 +6,7 @@ class CommentNews extends Entity
 {
     protected $id,
               $newsId,
-              $userId,
+              $user,
               $content,
               $report,
               $commentDate;
@@ -22,14 +22,14 @@ class CommentNews extends Entity
         $this->id = (int) $id;
     }
 
-    public function setGameId($newsId)
+    public function setNewsId($newsId)
     {
         $this->newsId = (int) $newsId;
     }
 
-    public function setUserId($userId)
+    public function setUser($user)
     {
-        $this->userId = (int) $userId;
+        $this->user = $user;
     }
 
     public function setContent($content)
@@ -57,9 +57,9 @@ class CommentNews extends Entity
         return $this->newsId;
     }
 
-    public function getUserId()
+    public function getUser()
     {
-        return $this->userId;
+        return $this->user;
     }
     
     public function getContent()

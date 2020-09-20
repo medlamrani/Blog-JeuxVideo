@@ -3,8 +3,9 @@
 namespace Project\lib\model;
 
 use  Project\lib\model;
+use  Project\lib\entity\CommentGame;
 
-class CommentGame extends DBConnect
+class CommentGameManager extends DBConnect
 {
     public function commentGame(CommentGame $commentGame)
     {
@@ -15,7 +16,7 @@ class CommentGame extends DBConnect
         $req = $this->connect()->prepare($sql);
 
         $req->bindValue(':game_id', $commentGame->getGameId(), \PDO::PARAM_INT);
-        $req->bindValue(':user_id', $commentGame->getUserId());
+        $req->bindValue(':user_id', $commentGame->getUser()->getId());
         $req->bindValue(':content', $commentGame->getContent());
 
         $req->execute();
@@ -34,13 +35,16 @@ class CommentGame extends DBConnect
 
     public function listOfComment($gameId)
     {
-        $sql = 'SELECT id, game_id, user_id, content, report, commentDate FROM commentGame WHERE game_id = :game_id';
+        //$sql = 'SELECT * FROM comment_game LEFT JOIN user ON user_id = user.id WHERE game_id = :game_id';
+        $sql = 'SELECT comment_game.id, game_id as gameId, user.username as user, content, report, commentDate FROM comment_game 
+                INNER JOIN user ON comment_game.user_id = user.id 
+                WHERE game_id = :game_id';
   
         $req = $this->connect()->prepare($sql);
         $req->bindValue(':game_id', $gameId, \PDO::PARAM_INT);
         $req->execute();
     
-        $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Comment');
+        $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Project\lib\entity\CommentGame');
     
         $comments = $req->fetchAll();
 
@@ -68,9 +72,21 @@ class CommentGame extends DBConnect
         $sql= "SELECT * FROM comment_game WHERE report = 1";
         $req = $this->connect()->query($sql);
 
-        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, '\Entity\Comment');
+        $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Project\lib\entity\CommentGame');
         $listreport = $req->fetchAll();
 
         return $listreport;
+    }
+
+    public function save(CommentGame $commentGame)
+    {
+        if($commentGame->isValid())
+        {
+            $this->commentGame($commentGame);
+        }
+        else
+        {
+            $_SESSION['message'] = 'Le commentaire doit etre valide pour etre enregistree'; 
+        }
     }
 }
