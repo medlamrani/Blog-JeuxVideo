@@ -86,7 +86,7 @@ class GameManager extends DBConnect
     public function listOfGames()
     {
         // La liste des jeux
-        $sql = 'SELECT game.id, name, resume, platform_id as platform, editor_id as editor, release_date FROM game
+        $sql = 'SELECT game.id, name, resume, platform.platform_name as platform, editor.editor_name as editor, release_date FROM game
         INNER JOIN platform ON platform_id = platform.id
         INNER JOIN editor ON editor_id = editor.id
         ORDER BY game.id DESC';
@@ -123,7 +123,7 @@ class GameManager extends DBConnect
     public function game($id)
     {
         // afficher un jeu 
-        $sql = "SELECT game.id, name, resume, platform_id as platform, editor_id as editor, release_date FROM game 
+        $sql = "SELECT game.id, name, resume, platform.platform_name as platform, editor.editor_name as editor, release_date FROM game 
         INNER JOIN platform ON platform_id = platform.id
         INNER JOIN editor ON editor_id = editor.id 
         WHERE game.id = :id";
