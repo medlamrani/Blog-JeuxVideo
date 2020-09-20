@@ -72,7 +72,7 @@ class CommentGameManager extends DBConnect
         $sql= "SELECT * FROM comment_game WHERE report = 1";
         $req = $this->connect()->query($sql);
 
-        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, '\Entity\Comment');
+        $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Project\lib\entity\CommentGame');
         $listreport = $req->fetchAll();
 
         return $listreport;

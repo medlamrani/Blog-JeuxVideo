@@ -185,4 +185,14 @@ class Controller
         }       
     }
 
+    public function reportCommentGame($id)
+    {
+        $commentManager = new model\CommentGameManager();
+
+        $reportComment = $commentManager->report($id);
+
+        header("location:".  $_SERVER['HTTP_REFERER']); 
+        
+    }
+
 }

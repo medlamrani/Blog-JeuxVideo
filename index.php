@@ -115,6 +115,10 @@ try
             {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
+        }
+        elseif ($_GET['action'] == 'reportComment')
+        {
+            $controller->reportCommentGame($_GET['id']);
         }  
         elseif($_GET['action'] == 'addPlatform')
         {
