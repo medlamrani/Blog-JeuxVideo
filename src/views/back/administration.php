@@ -2,9 +2,9 @@
 
 <?php ob_start(); ?>
 
-    <header class="masthead">
-        <div>
-            <h1>Administration  !!!</h1>
+    <header class="backhead">
+        <div class="bloc">
+            <h1>Welcome <?= $_SESSION['username'] ?></h1>
         </div>
     </header>
 
@@ -12,7 +12,12 @@
 
 <?php ob_start(); ?>
 
-    <h2>Heello</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-8"></div>
+            <div class="col-4"></div>
+        </div>
+    </div>
 
 <?php $content = ob_get_clean(); ?>
 

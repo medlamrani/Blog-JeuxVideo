@@ -140,8 +140,9 @@ class Controller
             );
             $commentManager->save($commentNews);
 
-            header("location:".  $_SERVER['HTTP_REFERER']); 
+            
             $_SESSION['message'] = 'Commentaire ajoute';
+            header("location:".  $_SERVER['HTTP_REFERER']); 
         }
         else
         {

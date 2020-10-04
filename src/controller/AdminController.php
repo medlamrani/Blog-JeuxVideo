@@ -12,31 +12,35 @@ class AdminController
     {
         if (empty($_SESSION['id']))
         {
-            header('Location: index.php?action=login');
+            header('Location: index.php?action=adminConnect');
             exit(); 
         }
     }
 
     public function administration()
     {
+        $this->sessionExists();
         require('src/views/back/administration.php');
     }
 
     public function adminConnect()
     {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        
-        $admin = new model\UserManager();
-
-        $result = $admin->adminConnect($username, $password);
-
-        if($result == true)
+        if(isset($_POST['username']))
         {
-            $newsManager = new model\PostManager();
-            $gameManager = new model\GameManger();
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            
+            $user = new model\UserManager();
 
-            $this->administration(); 
+            $result = $user->adminConnect($username, $password);
+
+            if($result == true)
+            {
+                $newsManager = new model\NewsManager();
+                $gameManager = new model\GameManager();
+
+                $this->administration(); 
+            }        
         }
         else
         {              

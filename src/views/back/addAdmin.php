@@ -10,25 +10,20 @@
     </head>
     <body>
         <div class="login-bloc text-center">
-            <div class="container-fluid">
-                <form action="?action=addAdmin" method="post" class="form-signin">
-                    <img class="mb-4" src="public/images/booki.png" width="72" height="72">
+            <div class="container form-game">
+                <form action="?action=addAdmin" method="post" class="form-signin bloc-form">
+                    <img class="mb-4" src="src/public/image/user.png" width="72" height="72">
                     <h1 class="h3 mb-3 font-weight-normal">Ajouter un admin</h1>
 
-                    <label for="username" >Pseudo :</label>
-                    <input type="text" id="username" name="username" class="form-control" value="Pseudo"/>
+                    <input type="text" id="username" name="username" class="form-control mb-4" value="Pseudo"/>
 
-                    <label for="name" >Prenom :</label>
-                    <input type="text" id="name" name="name" class="form-control" value="Prenom"/>
+                    <input type="text" id="name" name="name" class="form-control mb-4" value="Prenom"/>
 
-                    <label for="lastname" >Nom :</label>
-                    <input type="text" id="lastname" name="lastname" class="form-control" value="Nom"/>
+                    <input type="text" id="lastname" name="lastname" class="form-control mb-4" value="Nom"/>
 
-                    <label for="email" >Email :</label>
-                    <input type="email" id="email" name="email" class="form-control" value="Email"/>
+                    <input type="email" id="email" name="email" class="form-control mb-4" value="Email"/>
 
-                    <label for="password" >Mot de passe : </label>
-                    <input type="password" id="password" name="password" class="form-control" value=""/>
+                    <input type="password" id="password" name="password" class="form-control mb-4" value="Mot de passe"/>
                     
                     
 

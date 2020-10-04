@@ -66,7 +66,10 @@ try
         {
             $adminController->addAdmin();
         }
-
+        elseif($_GET['action'] == 'adminConnect')
+        {
+            $adminController->adminConnect();
+        }
         elseif($_GET['action'] == 'administration')
         {
             $adminController->administration();
