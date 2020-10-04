@@ -12,7 +12,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top justify-content-between">
             <a class="navbar-brand">
                 <img src="src/public/image/controller.png" width="40" height="40" alt="" loading="lazy">
-                Jeux Video
+                Administration
             </a>
             <div class="collapse navbar-collapse ml-5" id="navbarTogglerDemo02">
                 <a class="navlink" href="index.php?action=administration">Home</a>

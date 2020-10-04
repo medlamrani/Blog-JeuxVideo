@@ -1,6 +1,6 @@
 body {
     font-family: "Lato", sans-serif;
-    background-image: url(../image/gameimage.jpg);
+
   }
 
   .bloc-home{
@@ -104,6 +104,26 @@ body {
     box-shadow: 5px 5px 5px black;
     padding: 20px;
     font-size: 20px;
+  }
+
+  .backhead
+  {
+    width: 80%;
+    margin: 100px auto;
+  }
+
+  .form-game
+  {
+    width: 80%;
+    margin: auto;
+    background-color: gainsboro;
+    padding: 20px;
+  }
+
+  .bloc-form
+  {
+    width: 80%;
+    margin: auto;
   }
 
 
