@@ -73,6 +73,27 @@
         </div>
     </section>
 
+    <section id="rating">
+        <div class="container bg-white shadow">
+            <div class="row">
+                <div class="col-sm-12">
+                    <form id="ratingForm" method="POST">
+                        <div class="form-group">
+                            <h4>Note ce Jeux</h4>
+                                <i class="fa fa-star fa-lg star-grey rateButton" aria-hidden="true" value="1"></i>
+                                <i class="fa fa-star fa-lg star-grey rateButton" aria-hidden="true" value="2"></i>
+                                <i class="fa fa-star fa-lg star-grey rateButton" aria-hidden="true" value="3"></i>
+                                <i class="fa fa-star fa-lg star-grey rateButton" aria-hidden="true" value="4"></i>
+                                <i class="fa fa-star fa-lg star-grey rateButton" aria-hidden="true" value="5"></i>
+
+                            <input type="submit" name="action" value="saveRating">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>    
+    </section>    
+
 
     
 

@@ -142,13 +142,5 @@ class GameManager extends DBConnect
         return $game;
     }
 
-    public function rateGame()
-    {
-        // donner une note a une jeu
-    }
-
-    public function gameRating()
-    {
-        // la moyenne des notes attribuer au jeu
-    }
+    
 }
