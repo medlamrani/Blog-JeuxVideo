@@ -59,7 +59,7 @@ class GameManager extends DBConnect
 
     public function listPlatform()
     {
-        $sql = "SELECT id, platform_name FROM platform";
+        $sql = "SELECT id, platform_name as platformName FROM platform";
         $req = $this->connect()->query($sql);
         $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Project\lib\entity\Platform');
 

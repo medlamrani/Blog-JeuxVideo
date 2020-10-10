@@ -12,21 +12,26 @@ class Rating{
 
     ratingEvent()
     {
-        this.rate.addEventListener("click", this.starRate.bind(this));
+        
+        for(let elt of this.rate )  {
+            elt.addEventListener("click", this.starRate.bind(this , elt));
+        }; 
         this.ratingForm.addEventListener("submit", this.formRate.bind(this));
     }
     
-    starRate()
+    starRate(elt, event)
     {
-        if(this.rate.hasClass('star-grey'))
+        console.log(elt.classList);
+        if(elt.hasClass('star-grey'))
         {
-            this.rate.removeClass('star-grey').addClass('star-highlight star-selected');
-            this.rate.prevAll(this.rate).removeClass('star-grey').addClass('star-highlight star-selected');
-            this.rate.nextAll(this.rate).removeClass('star-highlight star-selected').addClass('star-grey');
+            
+            elt.classList.remove('star-grey').classList.add('star-highlight star-selected');
+            elt.prevAll(elt).classList.remove('star-grey').classList.add('star-highlight star-selected');
+            elt.nextAll(elt).classList.remove('star-highlight star-selected').classList.add('star-grey');
         }
         else
         {
-            this.rate.nextAll(this.rate).removeClass('star-highlight star-selected').addClass('star-grey');
+            elt.nextAll(elt).classList.remove('star-highlight star-selected').classList.add('star-grey');
         }
         this.rating.val(this.selectedStar.length);
     }

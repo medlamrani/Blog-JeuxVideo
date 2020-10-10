@@ -26,6 +26,26 @@
                     <div class="text-justify article-text text-reader"><?= nl2br($game->getResume()) ?></div>
                     <div class="text-justify article-text text-reader"><?= $game->getPlatform() ?></div>
                     <div class="text-justify article-text text-reader"><?= $game->getEditor() ?></div>
+                    <div class="mb-5">
+                    <?php
+                    
+                        //$averageRating = round($average);
+                        
+                        for ($i = 1; $i <= 5; $i++) {
+                            $ratingClass = "star-grey";
+                          
+                            if($i <= $average) {
+                                
+                                $ratingClass = "star-highlight";
+                            }
+
+
+                        echo	'<i class="fa fa-star '.$ratingClass. '"; aria-hidden="true"></i>';
+
+                        }
+                        //echo $count . ' Reviews';
+                    ?>
+                    </div>
                 </div>    
             </div>
         </div>
@@ -77,16 +97,32 @@
         <div class="container bg-white shadow">
             <div class="row">
                 <div class="col-sm-12">
-                    <form id="ratingForm" method="POST">
-                        <div class="form-group">
+                    <form action="index.php?action=addRating&amp;id=<?= $game->getId() ?>" method="post">
+                        <div class="stars-rating">
                             <h4>Note ce Jeux</h4>
-                                <i class="fa fa-star fa-lg star-grey rateButton" aria-hidden="true" value="1"></i>
+    
+                                <input id="rate-1" name="rate" value="1"></input>
+                                <label for="rate-1" class="fa fa-star"></label>
+
+                                <input id="rate-2" name="rate" value="2"></input>
+                                <label for="rate-2" class="fa fa-star"></label>
+
+                                <input id="rate-3" name="rate" value="3"></input>
+                                <label for="rate-3" class="fa fa-star"></label>
+
+                                <input id="rate-4" name="rate" value="4"></input>
+                                <label for="rate-4" class="fa fa-star"></label>
+
+                                <input id="rate-5" name="rate" value="5"></input>
+                                <label for="rate-5" class="fa fa-star"></label>
+                            
+                             <!--   <i class="fa fa-star fa-lg star-grey rateButton" aria-hidden="true" value="1"></i>
                                 <i class="fa fa-star fa-lg star-grey rateButton" aria-hidden="true" value="2"></i>
                                 <i class="fa fa-star fa-lg star-grey rateButton" aria-hidden="true" value="3"></i>
                                 <i class="fa fa-star fa-lg star-grey rateButton" aria-hidden="true" value="4"></i>
                                 <i class="fa fa-star fa-lg star-grey rateButton" aria-hidden="true" value="5"></i>
-
-                            <input type="submit" name="action" value="saveRating">
+-->
+                            <input type="submit" name="addRating" value="Notez"/>
                         </div>
                     </form>
                 </div>
