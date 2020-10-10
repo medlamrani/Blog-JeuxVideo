@@ -82,6 +82,10 @@ try
         {
             $adminController->addNews();
         } 
+        elseif($_GET['action'] == 'addRating')
+        {
+            $controller->addRating($_GET['id']);
+        }
         elseif($_GET['action'] == 'addComment')
         {
             if (isset($_GET['id']) && $_GET['id'] > 0) 

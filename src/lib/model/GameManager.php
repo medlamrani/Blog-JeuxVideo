@@ -59,7 +59,7 @@ class GameManager extends DBConnect
 
     public function listPlatform()
     {
-        $sql = "SELECT id, platform_name FROM platform";
+        $sql = "SELECT id, platform_name as platformName FROM platform";
         $req = $this->connect()->query($sql);
         $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Project\lib\entity\Platform');
 
@@ -142,13 +142,5 @@ class GameManager extends DBConnect
         return $game;
     }
 
-    public function rateGame()
-    {
-        // donner une note a une jeu
-    }
-
-    public function gameRating()
-    {
-        // la moyenne des notes attribuer au jeu
-    }
+    
 }

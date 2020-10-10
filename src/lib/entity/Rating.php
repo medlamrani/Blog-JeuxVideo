@@ -4,27 +4,48 @@ namespace Project\lib\entity;
 
 class Rating extends Entity
 {
-    protected $id,
+    protected $user,
+              $game,  
               $rate;
               
 
-    public function setId($id)
+    public function setUser($user)
     {
-        $this->id = (int) $id;
+        $this->user = $user;
+    } 
+
+    public function setGame($game)
+    {
+        $this->game = $game;
     } 
     
     public function setRate($rate)
     {
-        $this->rate = $rate;
+        $this->rate = (int) $rate;
     }
 
-    public function getId()
+    public function setRatingAverage($ratingAverage)
     {
-        return $this->id;
+        $this->ratingAverage = (int) $ratingAverage;
+    }
+
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    public function getGame()
+    {
+        return $this->game;
     }
 
     public function getRate()
     {
         return $this->rate;
+    }
+
+    public function getRatingAverage()
+    {
+        return $this->ratingAverage;
     }
 }

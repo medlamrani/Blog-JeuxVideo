@@ -94,11 +94,48 @@ class Controller
     {
         $gameManager = new model\GameManager();
         $commentGame = new model\CommentGameManager();
+        $ratingManager = new model\RatingManager();
 
         $game = $gameManager->game($_GET['id']);
         $listOfComments = $commentGame->listOfComment($_GET['id']);
+        $average = $ratingManager->getRatingAverage($_GET['id']);
 
         require('src/views/front/game.php');
+    }
+
+    public function addRating($game)
+    {
+        $ratingManager = new model\RatingManager();
+
+        if(!empty($_SESSION['id']))
+        {           
+            $rating = new entity\Rating(
+                [
+                    'user' => new entity\User(
+                        [
+                            'id' => $_SESSION['id'], 
+                            'username' => $_SESSION['username']
+                        ]),
+                    'game' => new entity\Game(
+                        [
+                            'id' => $_GET['id']
+                        ]
+                    ),
+                    'rate' => $_POST['rate']
+                ]
+            );
+            $ratingManager->rateGame($rating);
+
+            
+            $_SESSION['message'] = 'Commentaire ajoute';
+            header("location:".  $_SERVER['HTTP_REFERER']); 
+        }
+        else
+        {
+            
+            $_SESSION['message'] = 'Vous devez etre connecter pour laisser un commentaire';
+            header("location:".  $_SERVER['HTTP_REFERER']); 
+        } 
     }
 
     public function listOfNews()

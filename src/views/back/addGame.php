@@ -25,8 +25,10 @@
             <label for="platform" >Platform :</label>
             <select name="platform" class="form-control">
                 <?php
+                var_dump($listPlatform);
                     foreach($listPlatform as $platform)
                     {  
+                        
                         echo '<option value="' ,$platform->getId(),'">',$platform->getPlatformName(),'  </option>';
                     }
                 ?>

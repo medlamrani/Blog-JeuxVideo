@@ -126,5 +126,24 @@ body {
     margin: auto;
   }
 
+  .stars-rating input
+  {
+    display: none;
+  }
+
+  .stars-rating input[type=submit]
+  {
+    display: block;
+  }
+
+  .star-grey{
+    color:#ddd;
+  }
+  
+  
+  .star-highlight{
+    color:#f9e570 !important;
+  }
+
 
 
