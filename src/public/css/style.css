@@ -131,6 +131,11 @@ body {
     display: none;
   }
 
+  .stars-rating label
+  {
+    cursor: pointer;
+  }
+
   .stars-rating input[type=submit]
   {
     display: block;
