@@ -28,8 +28,8 @@
             if(empty($_SESSION['id']))
             {
             ?>
-                <a class="navlink" href="index.php?action=inscription">Inscription</a>
-                <a class="navlink" href="index.php?action=login">Se Connecter</a>  
+                <a class="navlink" href="index.php?page=controller&action=inscription">Inscription</a>
+                <a class="navlink" href="index.php?page=controller&action=connect">Se Connecter</a>  
             <?php      
             }
             else
