@@ -32,14 +32,20 @@ class Controller
             $user = new model\UserManager();
 
             $result = $user->userConnect($username, $password);
+            var_dump($result);
 
             if($result == true)
             {
+                
                 $newsManager = new model\NewsManager();
                 $gameManager = new model\GameManager();
 
-                header('Location: index.php?page=controller&action=home');
-            }        
+                require('src/views/front/home.php');
+            }  
+            else
+            {
+                echo 'Mot de passe incorrect';
+            }      
         }
         else
         {              
@@ -207,6 +213,9 @@ class Controller
                 ]
             );
             $commentManager->save($commentGame);  
+            
+            $_SESSION['message'] = 'Commentaire ajoute';
+            header("location:".  $_SERVER['HTTP_REFERER']); 
         }
         else
         {          
