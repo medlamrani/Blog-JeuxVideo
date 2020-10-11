@@ -10,7 +10,7 @@
     </head>
     <body>    
         <div class="login-bloc text-center">
-            <form action="?action=login" method="post" class="login">
+            <form action="index.php?action=connect" method="post" class="login">
                 <img class="mb-4" src="src/public/image/user.png" alt="" width="72" height="72">
 
                 <h1 class="h3 mb-3 font-weight-normal">Connectez-vous</h1>
@@ -21,7 +21,7 @@
                 <label for="password" class="sr-only">Mot de passe :</label>
                 <input type="password" id="password" name="password" class="form-control mb-4" placeholder="Mot de passe" required="">
 
-                <input type="submit" value="Se connecter" name="login" class="btn btn-lg btn-primary btn-block" />
+                <input type="submit" value="Se connecter" class="btn btn-lg btn-primary btn-block" />
                 
             </form>
         </div>    

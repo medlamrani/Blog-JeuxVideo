@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS `role` (
 CREATE TABLE IF NOT EXISTS `game` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
+  `resume` text NOT NULL,
   `platform_id` int(11) NOT NULL,
   `editor_id` int(11) NOT NULL,
   `release_date` date NOT NULL,

@@ -17,7 +17,7 @@ class Controller
     {
         if (empty($_SESSION['id']))
         {
-            header('Location: index.php?action=login');
+            header('Location: index.php?page=controller&action=connect');
             exit(); 
         }
     }
@@ -38,7 +38,7 @@ class Controller
                 $newsManager = new model\NewsManager();
                 $gameManager = new model\GameManager();
 
-                require('src/views/front/home.php'); 
+                header('Location: index.php?page=controller&action=home');
             }        
         }
         else
@@ -133,7 +133,7 @@ class Controller
         else
         {
             
-            $_SESSION['message'] = 'Vous devez etre connecter pour laisser un commentaire';
+            $_SESSION['message'] = 'Vous devez etre connecter pour noter le jeux';
             header("location:".  $_SERVER['HTTP_REFERER']); 
         } 
     }
