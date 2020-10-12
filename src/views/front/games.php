@@ -41,7 +41,7 @@
                         <p class="card-text"><?= nl2br($resume) ?></p>
                         <div class="platform"><?= $game->getPlatform() ?></div>
                         <div class="editor"><?= $game->getEditor() ?></div>
-                        <a href="index.php?action=game&amp;id=<?= $game->getId() ?>" class="btn btn-primary">Go</a>
+                        <a href="http://localhost/projet5/Controller/Game/<?= $game->getId() ?>" class="btn btn-primary">Go</a>
                     </div>                        
                 <?php
                 }

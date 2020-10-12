@@ -12,7 +12,7 @@ class AdminController
     {
         if (empty($_SESSION['id']))
         {
-            header('Location: index.php?action=adminConnect');
+            header('Location: index.php?page=Admin&action=adminConnect');
             exit(); 
         }
     }

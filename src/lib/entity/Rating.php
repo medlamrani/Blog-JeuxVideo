@@ -24,11 +24,6 @@ class Rating extends Entity
         $this->rate = (int) $rate;
     }
 
-    public function setRatingAverage($ratingAverage)
-    {
-        $this->ratingAverage = (int) $ratingAverage;
-    }
-
     public function getUser()
     {
         return $this->user;
@@ -42,10 +37,5 @@ class Rating extends Entity
     public function getRate()
     {
         return $this->rate;
-    }
-
-    public function getRatingAverage()
-    {
-        return $this->ratingAverage;
     }
 }

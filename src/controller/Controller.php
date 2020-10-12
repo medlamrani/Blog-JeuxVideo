@@ -10,6 +10,9 @@ class Controller
     public function home()
     {
         $gameManager = new model\GameManager();
+        $newsManager = new model\NewsManager();
+        $lastGame = $gameManager->lastGame();
+        $lastNews = $newsManager->listOfNews(0, 1);
         require('src/views/front/home.php');
     }
 
@@ -107,6 +110,15 @@ class Controller
         $average = $ratingManager->getRatingAverage($_GET['id']);
 
         require('src/views/front/game.php');
+    }
+
+    public function topGames()
+    {
+        $ratingManager = new model\RatingManager();
+        $topRate = $ratingManager->topGames(0 , 2);
+        
+
+        require('src/views/front/topGames.php');
     }
 
     public function addRating($game)
