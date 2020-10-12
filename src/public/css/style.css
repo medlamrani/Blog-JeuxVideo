@@ -1,21 +1,15 @@
 body {
     font-family: "Lato", sans-serif;
+    background-image: url(../image/backgaming.jpg);
 
   }
 
   .bloc-home{
-    width: 900px;
-    min-width: 700px;
+    width: 800px;
     margin: auto;
     
   }
   
-  .mynav {
-    width: 900px;
-    min-width: 700px;
-    height: 80px;
-    margin: auto;
-  }
   
   .masthead {
     width: 100%;
@@ -151,4 +145,14 @@ body {
   }
 
 
+  @media screen and (max-width: 900px){
 
+    .bloc-home{
+      width: 100%;
+    }
+   
+
+
+
+
+  }

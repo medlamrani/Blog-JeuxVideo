@@ -22,7 +22,7 @@
         <div class="container bg-white shadow">
             <div class="row">
                 <div class="col-sm-12">
-                    <form action="index.php?action=addRating&amp;id=<?= $game->getId() ?>" method="post">
+                    <form action="http://localhost/projet5/Controller/addRating/<?= $game->getId() ?>" method="post">
                         <div class="stars-rating">
                             <h4>Note ce Jeux</h4>
                                 <input id="rate-1" type="checkbox" name="rate" value="1"></input>
@@ -80,7 +80,7 @@
         </div>
     </section>
 
-    <a class="btn btn-primary btn-lg active" href="index.php?action=games">Retour</a>
+    <a class="btn btn-primary btn-lg active" href="http://localhost/projet5/Controller/games">Retour</a>
 
     <section id="commentaire">
         <div class="container bg-white shadow">
@@ -93,7 +93,7 @@
                 
                     <div class="text-justify mb-5">Posté par <strong><?= $comment->getUser() ?></strong> le <?= $comment->getCommentDate() ?></div>
                     <div class="text-justify article-text text-reader"><?= nl2br($comment->getContent()) ?></div>
-                    <a class="btn btn-primary btn-lg active" href="index.php?action=reportComment&amp;id=<?= $comment->getId() ?>">Signaler</a>
+                    <a class="btn btn-primary btn-lg active" href="http://localhost/projet5/Controller/reportComment&amp;id=<?= $comment->getId() ?>">Signaler</a>
                     <hr>
                 </div>    
             <?php
@@ -108,7 +108,7 @@
             <div class="row">
                 <div class="col-10 offset-1 mb-5 mt-5">
                     <div class="text-justify mb-5">Laisser un commentaire</div>
-                    <form action="index.php?action=commentGame&amp;id=<?= $game->getId() ?>" method="post" class="form-signin">
+                    <form action="http://localhost/projet5/Controller/commentGame&amp;id=<?= $game->getId() ?>" method="post" class="form-signin">
                         <div>
                             <label for="content">Commentaire</label><br />
                             <textarea class="form-control" id="content" name="content" ></textarea>

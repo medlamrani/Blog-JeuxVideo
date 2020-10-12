@@ -108,16 +108,24 @@ class GameManager extends DBConnect
 
     public function lastGame()
     {
-        $sql = 'SELECT * FROM game ORDER BY id DESC LIMIT 1';
+        $sql = 'SELECT game.id, name, resume, platform.platform_name as platform, editor.editor_name as editor, release_date FROM game
+        INNER JOIN platform ON platform_id = platform.id
+        INNER JOIN editor ON editor_id = editor.id
+        ORDER BY game.id DESC LIMIT 1';
 
         $req = $this->connect()->query($sql);  
         $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Project\lib\entity\Game');
         
         $lastGame = $req->fetchAll();
 
+        foreach ($lastGame as $game) 
+        {
+            $game->setReleaseDate(new \DateTime($game->getReleaseDate()));
+        }
+
         $req->closeCursor();
 
-        return $lastGames;
+        return $lastGame;
     }
 
     public function game($id)

@@ -4,45 +4,63 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="src/public/css/style.css">
-        <link rel="stylesheet" type="text/css" href="src/public/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="/projet5/src/public/css/style.css">
+        <link rel="stylesheet" type="text/css" href="/projet5/src/public/css/bootstrap.css">
         <title><?= $title ?></title>
     </head>
     <body>  
     <div class="bloc-home">
         <nav class="mynav navbar navbar-expand-lg navbar-light bg-light fixed-top justify-content-between">
-            <div class="collapse navbar-collapse ml-4">
-                <a class="navbar-brand">
-                    <img src="src/public/image/controller.png" width="40" height="40" alt="" loading="lazy">
-                    Jeux Videos
-                </a>
-            </div>    
-            <div class="collapse navbar-collapse ml-5" id="navbarTogglerDemo02">
-                <a class="navlink" href="index.php">Accueil</a>
-                <a class="navlink" href="index.php?action=games">Games</a>   
-                <a class="navlink" href="index.php?action=actualites">Actualites</a>   
-                <a class="navlink" href="index.php?action=">Top 5</a>             
-            </div>
-            <div class="collapse navbar-collapse ml-5" >
-            <?php
-            if(empty($_SESSION['id']))
-            {
-            ?>
-                <a class="navlink" href="index.php?action=inscription">Inscription</a>
-                <a class="navlink" href="index.php?action=login">Se Connecter</a>  
-            <?php      
-            }
-            else
-            {
-                ?>
-                <a class="navlink" href="index.php?action=monprofil"><?php echo 'Bonjour '. $_SESSION['username'];?></a>
-                <a class="navlink" href="index.php?action=logout">
-                    <img src="src/public/image/logout.png" width="30" height="30" alt="" loading="lazy"> 
-                </a>
-            <?php    
-            }
-                
-            ?>    
+            
+            <a class="navbar-brand">
+                <img src="/projet5/src/public/image/controller.png" width="40" height="40" alt="" loading="lazy">
+                Jeux Videos
+            </a>
+              
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>  
+
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="http://localhost/projet5/Controller/Home">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/projet5/Controller/ListOfGames">Games</a>   
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/projet5/Controller/ListOfNews">Actualites</a>   
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/projet5/Controller/TopGames">Top 5</a>     
+                    </li>
+                    <?php
+                    if(empty($_SESSION['id']))
+                    {
+                    ?>
+                        <a class="nav-link" href="http://localhost/projet5/Controller/inscription">Inscription</a>
+                        <a class="nav-link" href="http://localhost/projet5/Controller/connect">Se Connecter</a> 
+                    <?php      
+                    }
+                    else
+                    {
+                    ?>     
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Account
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="http://localhost/projet5/Controller/monprofil"><?php echo 'Bonjour '. $_SESSION['username'];?></a>
+                            <a class="dropdown-item" href="http://localhost/projet5/Controller/logout">
+                                <img src="/projet5/src/public/image/logout.png" width="30" height="30" alt="" loading="lazy"> 
+                            </a>
+                        </div>
+                    </li>
+                    <?php    
+                    }          
+                    ?> 
+                </ul>
             </div>
         </nav>  
 
@@ -70,7 +88,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 
-    <script src="src/public/js/rating.js"></script>
-    <script src="src/public/js/main.js"></script>
+    <script src="/projet5/src/public/js/rating.js"></script>
+    <script src="/projet5/src/public/js/main.js"></script>
     </body>
 </html>
