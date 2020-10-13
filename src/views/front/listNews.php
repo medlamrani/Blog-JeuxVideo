@@ -39,7 +39,7 @@
                   
                         <h3 class="card-title text-center"> <?= $news->getTitle() ?></h3>
                         <p class="card-text"><?= nl2br($content) ?></p>
-                        <a href="index.php?action=actu&amp;id=<?= $news->getId() ?>" class="btn btn-info btn-lg active" role="button" aria-pressed="true">Lire la suite</a>
+                        <a href="http://localhost/projet5/Controller/news/<?= $news->getId() ?>" class="btn btn-info btn-lg active" role="button" aria-pressed="true">Lire la suite</a>
                     </article>
 
                     <hr>

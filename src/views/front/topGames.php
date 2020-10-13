@@ -24,7 +24,7 @@
                 ?>
                     <div class="game-card">
                         <h3 class="card-title text-center"> <?= $rate->getGame() ?></h3>
-                        <p class="card-text"><?= $rate->getRate() ?></p>
+                        
                     </div>                        
              
                    

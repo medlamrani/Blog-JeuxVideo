@@ -62,16 +62,10 @@ class RatingManager extends DBConnect
         return $average['rate_avg'];
     }
 
-    public function topGames($debut = -1, $limite = -1)
+    public function topGames()
     {
-        $sql = 'SELECT user_id, game.name as game, AVG(rate) as rate_avg FROM rating 
-                INNER JOIN game ON game_id = game.id
-                ORDER BY rate_avg DESC';
+        $sql = 'SELECT game_id as game, AVG(rate) as rate_avg FROM rating GROUP BY game_id ORDER BY rate_avg DESC LIMIT 5';
 
-        if ($debut != -1 || $limite != -1)
-        {
-            $sql .= ' LIMIT ' . (int) $limite. ' OFFSET '. (int) $debut;
-        }
 
         $req = $this->connect()->query($sql);  
         $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Project\lib\entity\Rating');

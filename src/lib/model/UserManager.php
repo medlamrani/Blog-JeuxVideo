@@ -9,7 +9,7 @@ class UserManager extends DBConnect
 {
     public function adminConnect($username, $password)
    {
-       $sql = "SELECT id, password FROM user WHERE username = :username";
+       $sql = "SELECT id, password, role_id FROM user WHERE username = :username";
 
        $req = $this->connect()->prepare($sql);
        $req->execute(array(
@@ -21,6 +21,7 @@ class UserManager extends DBConnect
        
        $isPasswordCorrect = password_verify($password, $result['password']);
        
+       
 
        if (!$result)
        {
@@ -29,7 +30,7 @@ class UserManager extends DBConnect
        }
        else
        {
-            if ($isPasswordCorrect)
+            if ($isPasswordCorrect && $result['role_id'] == 1)
             {
                 $_SESSION['id'] = $result['id'];
                 $_SESSION['username'] = $username;

@@ -21,7 +21,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>  
 
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <div class="ml-5 collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
                         <a class="nav-link" href="http://localhost/projet5/Controller/Home">Accueil</a>

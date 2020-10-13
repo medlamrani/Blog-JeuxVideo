@@ -12,7 +12,7 @@ class AdminController
     {
         if (empty($_SESSION['id']))
         {
-            header('Location: index.php?page=Admin&action=adminConnect');
+            header('Location: http://localhost/projet5/admin/adminConnect');
             exit(); 
         }
     }
@@ -80,7 +80,7 @@ class AdminController
 
     public function addNews()
     {
-        //$this->sessionExists();
+        $this->sessionExists();
 
         $newsManager = new model\NewsManager();
 
@@ -141,7 +141,7 @@ class AdminController
 
     public function addGame()
     {
-        //$this->sessionExists();
+        $this->sessionExists();
 
         $gameManager = new model\GameManager();
         
