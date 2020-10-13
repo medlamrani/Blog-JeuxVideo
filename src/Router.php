@@ -6,6 +6,7 @@ class Router
 {
 
     const DEFAULT_METHOD = 'home';
+    const DEFAULT_CONTROLLER = "";
 
     public function __construct()
     {
@@ -19,13 +20,13 @@ class Router
     {
         $page = filter_input(INPUT_GET, 'page');
         if (!isset($page)) {
-            $page = 'home';
+            $page = DEFAULT_CONTROLLER;
         }
         $this->controller = $page;
 
         $method = filter_input(INPUT_GET, 'action');
         if (!isset($method)) {
-            $method = 'DefaultMethod';
+            $method = DEFAULT_METHOD;
         }
         $this->method = $method;
     }

@@ -1,6 +1,6 @@
 body {
     font-family: "Lato", sans-serif;
-    background-image: url(../image/backgaming.jpg);
+    background-image: url(../image/gameimage.jpg);
 
   }
 
@@ -8,6 +8,11 @@ body {
     width: 800px;
     margin: auto;
     
+  }
+
+  .mynav{
+    width: 800px;
+    margin: auto;
   }
   
   
