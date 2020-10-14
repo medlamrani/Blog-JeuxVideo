@@ -25,7 +25,7 @@
 # Liens 
 
 * Le lien de mon application : http://gameworld.web-devmed.fr/
-* Pour acceder a la partie administration : http://gameworld.web-devmed.fr/index.php?action=administration
+* Pour acceder a la partie administration : http://gameworld.web-devmed.fr/admin/administration
 
 
 
