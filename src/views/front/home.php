@@ -13,15 +13,15 @@
 
 <?php ob_start(); ?>
 
-<section id="games">
-
-    <div class="container bg-white shadow">
-        <div class="container">
-            <div class="container-flex">
+<div class="container bloc mb-5 mt-5">
+        <div class="bloc mb-5">
+            <h2 class="text-center" style="36px">Nouveaute</h2>
+        </div>
+        <div class="row">
+            <div class="col-12 ">
                 <?php 
                 foreach ($lastGame as $game)
                 {
-                    //$resume = $game->getResume();
                     if (strlen($game->getResume()) <= 40)
                     {
                         $resume = $game->getResume();
@@ -34,27 +34,30 @@
                       
                       $resume = $debut;
                     }
-                   // $resume = $game->getResume();
+
                 ?>
                     <div class="game-card">
                         <h3 class="card-title text-center"> <?= $game->getName() ?></h3>
                         <p class="card-text"><?= nl2br($resume) ?></p>
                         <div class="platform"><?= $game->getPlatform() ?></div>
                         <div class="editor"><?= $game->getEditor() ?></div>
-                        <a href="http://localhost/projet5/Controller/Game/<?= $game->getId() ?>" class="btn btn-primary">Go</a>
+                        <a href="http://localhost/projet5/controller/game/<?= $game->getId() ?>" class="btn btn-primary">Go</a>
                     </div>                        
                 <?php
                 }
-                ?>
-            </div>    
+                ?>    
+            </div>
+            <div class="col-4"></div>
         </div>
     </div>
-</section>
 
-<section id="articles">
-    <div class="container bg-white shadow">
+    <div class="container bloc mb-5">
+        <div class="bloc mb-5">
+            <h2 class="text-center" style="36px">Derniere Actu</h2>
+        </div>
         <div class="row">
             <div class="col-10 offset-1 mb-5 mt-5">
+            
                 <?php 
                 foreach ($lastNews as $news)
                 {                 
@@ -77,7 +80,7 @@
                   
                         <h3 class="card-title text-center"> <?= $news->getTitle() ?></h3>
                         <p class="card-text"><?= nl2br($content) ?></p>
-                        <a href="index.php?action=actu&amp;id=<?= $news->getId() ?>" class="btn btn-info btn-lg active" role="button" aria-pressed="true">Lire la suite</a>
+                        <a href="http://localhost/projet5/controller/news/<?= $news->getId() ?>" class="btn btn-info btn-lg active" role="button" aria-pressed="true">Lire la suite</a>
                     </article>
 
                     <hr>
@@ -86,10 +89,7 @@
             ?>
             </div>
         </div>
-    </div>
-</section>
-
-
+    </div>       
 
 <?php $content = ob_get_clean(); ?>
 

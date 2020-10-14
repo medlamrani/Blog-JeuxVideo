@@ -20,6 +20,21 @@ class AdminController
     public function administration()
     {
         $this->sessionExists();
+
+        $gameManager = new model\GameManager();
+        $listOfGames = $gameManager->listOfGames();
+
+        $newsManager = new model\NewsManager();
+        $listOfNews = $newsManager->listOfNews();
+
+        $commentGame = new model\CommentGameManager();
+        $reportedCommentGame = $commentGame->reportedCommentGame();
+
+        $commentNews = new model\CommentNewsManager();
+        $reportedCommentNews = $commentNews->reportedCommentNews();
+
+
+
         require('src/views/back/administration.php');
     }
 
@@ -39,8 +54,14 @@ class AdminController
                 $newsManager = new model\NewsManager();
                 $gameManager = new model\GameManager();
 
+                $_SESSION['message'] = 'Vous etes connecte';
                 $this->administration(); 
-            }        
+            }    
+            else
+            {
+                $_SESSION['message'] = 'Mot de passe incorrect';
+                require('src/views/back/adminConnect.php');   
+            }    
         }
         else
         {              
@@ -113,10 +134,9 @@ class AdminController
         {
             $news = new entity\News(
                 [
-                    'userId' => $_SESSION['id'],
                     'title' => $_POST['title'],
                     'content' => $_POST['content'],
-                    'id' =>$id
+                    'id' =>$_GET['id']
                 ]
             );
 
@@ -129,13 +149,14 @@ class AdminController
         }  
     }
 
-    public function deleteNews($id)
+    public function deleteNews()
     {
         $this->sessionExists();
 
         $newsManager = new model\NewsManager();
-        $newsManager->deleteNews($id);
+        $newsManager->deleteNews($_GET['id']);
 
+        $_SESSION['message'] = 'L\'actu a ete supprimee';
         $this->administration();
     }
 
@@ -174,8 +195,57 @@ class AdminController
         $this->sessionExists();
 
         $gameManager = new model\GameManager();
-        $gameManager->deleteGame($id);
+        $gameManager->deleteGame($_GET['id']);
 
         $this->administration();
     }
+
+    public function approveCommentGame()
+    {
+        $this->sessionExists();
+
+        $commentGame = new model\CommentGameManager();
+        $commentGame->noReport($_GET['id']);
+
+        $this->administration();
+    }
+
+    public function approveCommentNews()
+    {
+        $this->sessionExists();
+
+        $commentNews = new model\CommentNewsManager();
+        $commentNews->noReport($_GET['id']);
+        
+        $this->administration();
+    }
+
+    public function deleteCommentGame()
+    {
+        $this->sessionExists();
+
+        $commentGame = new model\CommentGameManager();
+        $commentGame->delete($_GET['id']);
+
+        $this->administration();
+    }
+
+    public function deleteCommentNews()
+    {
+        $this->sessionExists();
+
+        $commentNews = new model\CommentNewsManager();
+        $commentNews->delete($_GET['id']);
+        
+        $this->administration();
+    }
+
+    
+
+    public function logOut()
+    {
+        session_destroy();
+        header('Location: http://localhost/projet5/admin/administration');
+    }
+    
 }

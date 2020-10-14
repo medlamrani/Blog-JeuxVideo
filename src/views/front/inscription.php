@@ -19,7 +19,7 @@
     <?php endif; ?>
         
     <div class="login-bloc text-center">
-        <form action="http://localhost/projet5/Controller/inscription" method="post" class="login form-signin">
+        <form action="http://localhost/projet5/controller/inscription" method="post" class="login form-signin">
             <img class="mb-4" src="/projet5/src/public/image/user.png" width="72" height="72">
             <h1 class="h3 mb-3 font-weight-normal">Inscription</h1>
 

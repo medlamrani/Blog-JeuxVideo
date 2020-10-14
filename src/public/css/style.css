@@ -63,6 +63,14 @@ body {
     margin-right: auto;
   }
 
+  section{
+    margin-bottom: 100px;
+  }
+
+  #rating{
+    margin-top: 20px;
+  }
+
   .game-card
   {
     width: 300px;
@@ -152,6 +160,13 @@ body {
 
   @media screen and (max-width: 900px){
 
+    .masthead {
+      background-image: url(../image/player.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      margin-bottom: 50px;
+    }
+    
     .bloc-home{
       width: 100%;
     }

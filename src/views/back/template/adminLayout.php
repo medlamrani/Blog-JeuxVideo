@@ -9,21 +9,22 @@
         <title><?= $title ?></title>
     </head>
     <body>  
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top justify-content-between">
+        <nav class="mb-5 navbar navbar-expand-lg navbar-light bg-light fixed-top justify-content-between">
             <a class="navbar-brand">
                 <img src="/projet5/src/public/image/controller.png" width="40" height="40" alt="" loading="lazy">
                 Administration
             </a>
             <div class="collapse navbar-collapse ml-5" id="navbarTogglerDemo02">
-                <a class="navlink" href="index.php?action=administration">Home</a>
-                <a class="navlink" href="index.php?action=addGame">Add Game</a>   
-                <a class="navlink" href="index.php?action=addNews">Add News</a>  
-                <a class="navlink" href="index.php?action=addAdmin">Add Admin</a>               
+                <a class="nav-link" href="http://localhost/projet5/admin/administration">Home</a>
+                <a class="nav-link" href="http://localhost/projet5/admin/addgame">Ajouter un jeu</a>   
+                <a class="nav-link" href="http://localhost/projet5/admin/addnews">Ajouter une actu</a>  
+                <a class="nav-link" href="http://localhost/projet5/admin/addadmin">Ajouter un  Admin</a>   
+                <a class="nav-link" href="http://localhost/projet5/admin/logout">Se deconnecter</a>            
             </div>
         </nav>  
 
         <?php if(isset($_SESSION['message'])) : ?> 
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <div class="mt-5 alert alert-warning alert-dismissible fade show" role="alert">
                 <strong><?php echo $_SESSION['message'] ;?></strong> 
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>

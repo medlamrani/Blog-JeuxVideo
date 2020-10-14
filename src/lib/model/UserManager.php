@@ -9,11 +9,11 @@ class UserManager extends DBConnect
 {
     public function adminConnect($username, $password)
    {
-       $sql = "SELECT id, password, role_id FROM user WHERE username = :username";
+       $sql = "SELECT id, password, role_id FROM user WHERE username = :username AND role_id = 1";
 
        $req = $this->connect()->prepare($sql);
        $req->execute(array(
-           'username' => $username
+           'username' => $username,
        ));
 
        $result = $req->fetch();

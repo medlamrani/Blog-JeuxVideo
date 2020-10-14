@@ -10,7 +10,7 @@
     </head>
     <body>  
     <div class="bloc-home">
-        <nav class="mynav navbar navbar-expand-lg navbar-light bg-light fixed-top justify-content-between">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top justify-content-between">
             
             <a class="navbar-brand">
                 <img src="/projet5/src/public/image/controller.png" width="40" height="40" alt="" loading="lazy">
@@ -24,16 +24,16 @@
             <div class="ml-5 collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="http://localhost/projet5/Controller/Home">Accueil</a>
+                        <a class="nav-link" href="http://localhost/projet5/controller/home">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://localhost/projet5/Controller/ListOfGames">Games</a>   
+                        <a class="nav-link" href="http://localhost/projet5/controller/listofgames">Games</a>   
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://localhost/projet5/Controller/ListOfNews">Actualites</a>   
+                        <a class="nav-link" href="http://localhost/projet5/controller/listofnews">Actualites</a>   
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://localhost/projet5/Controller/TopGames">Top 5</a>     
+                        <a class="nav-link" href="http://localhost/projet5/controller/topgames">Top 5</a>     
                     </li>
                     <?php
                     if(empty($_SESSION['id']))
@@ -51,8 +51,8 @@
                             Account
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="http://localhost/projet5/Controller/monprofil"><?php echo 'Bonjour '. $_SESSION['username'];?></a>
-                            <a class="dropdown-item" href="http://localhost/projet5/Controller/logout">
+                            <?php echo $_SESSION['username'];?>
+                            <a class="dropdown-item" href="http://localhost/projet5/controller/logout">
                                 <img src="/projet5/src/public/image/logout.png" width="30" height="30" alt="" loading="lazy"> 
                             </a>
                         </div>
@@ -65,7 +65,7 @@
         </nav>  
 
         <?php if(isset($_SESSION['message'])) : ?> 
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <div class="mt-5 alert alert-warning alert-dismissible fade show" role="alert">
                 <strong><?php echo $_SESSION['message'] ;?></strong> 
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>

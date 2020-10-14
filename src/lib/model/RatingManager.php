@@ -64,7 +64,9 @@ class RatingManager extends DBConnect
 
     public function topGames()
     {
-        $sql = 'SELECT game_id as game, AVG(rate) as rate_avg FROM rating GROUP BY game_id ORDER BY rate_avg DESC LIMIT 5';
+        $sql = 'SELECT game_id as gameId, game.name as game , AVG(rate) as rate_avg FROM rating
+        INNER JOIN game ON game_id = game.id
+        GROUP BY game_id, game.name ORDER BY rate_avg DESC LIMIT 5';
 
 
         $req = $this->connect()->query($sql);  

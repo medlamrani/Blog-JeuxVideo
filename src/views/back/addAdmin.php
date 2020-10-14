@@ -11,7 +11,7 @@
     <body>
         <div class="login-bloc text-center">
             <div class="container form-game">
-                <form action="?action=addAdmin" method="post" class="form-signin bloc-form">
+                <form action="http://localhost/projet5/admin/addadmin" method="post" class="form-signin bloc-form">
                     <img class="mb-4" src="src/public/image/user.png" width="72" height="72">
                     <h1 class="h3 mb-3 font-weight-normal">Ajouter un admin</h1>
 

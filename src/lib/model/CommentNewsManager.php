@@ -25,7 +25,7 @@ class CommentNewsManager extends DBConnect
         
     }
 
-    public function delete()
+    public function delete($id)
     {
         $sql = "DELETE FROM comment_news WHERE id = ".(int) $id;
         $req = $this->connect()->exec($sql);
@@ -35,7 +35,6 @@ class CommentNewsManager extends DBConnect
 
     public function listOfComment($newsId)
     {
-        //$sql = 'SELECT * FROM comment_news INNER JOIN news ON comment_news.news_id = news.id INNER JOIN user ON comment_news.user_id = user.id WHERE comment_news.news_id = :news_id ORDER BY commentDate DESC';
         $sql = 'SELECT comment_news.id, news_id as newsId, user.username as user, content, report, commentDate FROM comment_news 
         INNER JOIN user ON comment_news.user_id = user.id 
         WHERE news_id = :news_id';
@@ -59,7 +58,7 @@ class CommentNewsManager extends DBConnect
         $req->bindValue(':id', (int) $id, \PDO::PARAM_INT);
         $req->execute();
 
-        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Project\lib\entity\CommentNews');
+        $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Project\lib\entity\CommentNews');
 
         $comment = $req->fetch();
 
@@ -82,12 +81,14 @@ class CommentNewsManager extends DBConnect
         $_SESSION['message'] = 'Le commentaire a ete approuver'; 
     }
 
-    public function reportedComment()
+    public function reportedCommentNews()
     {
-        $sql= "SELECT * FROM comment_news WHERE report = 1";
+        $sql= "SELECT comment_news.id, news_id as newsId, user.username as user, content, report, commentDate FROM comment_news 
+        INNER JOIN user ON comment_news.user_id = user.id 
+        WHERE report = 1";
         $req = $this->connect()->query($sql);
 
-        $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Project\lib\entity\Comment');
+        $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Project\lib\entity\CommentNews');
         $listreport = $req->fetchAll();
 
         return $listreport;

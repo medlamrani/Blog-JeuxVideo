@@ -22,7 +22,7 @@
                 foreach ($topRate as $rate)
                 {
                 ?>
-                    <div class="game-card">
+                    <div class="container">
                         <h3 class="card-title text-center"> <?= $rate->getGame() ?></h3>
                         
                     </div>                        

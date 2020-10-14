@@ -72,7 +72,7 @@ class GameManager extends DBConnect
 
     public function listEditor()
     {
-        $sql = "SELECT id, editor_name FROM editor";
+        $sql = "SELECT id, editor_name as editorName FROM editor";
         $req = $this->connect()->query($sql);
         $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Project\lib\entity\Editor');
 

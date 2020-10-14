@@ -28,6 +28,7 @@ class NewsManager extends DBConnect
         // supprimer une news
         $sql = "DELETE FROM news WHERE id = ".(int) $id;
         $req = $this->connect()->exec($sql);
+        var_dump($id);
 
         $_SESSION['message'] = 'L\'article a ete supprime avec succes !'; 
     }
@@ -35,15 +36,14 @@ class NewsManager extends DBConnect
     public function updateNews(News $news)
     {
         // Modifier une news
-        $sql = "UPDATE news SET user_id = :user_id, title = :title, content = :content, updateDate = NOW() WHERE id = :id";
-        $req = $this->connect()->prepare($sql);
+        $sql = "UPDATE news SET title = :title, content = :content, updateDate = NOW() WHERE id = :id";
+        $db = $this->connect()->prepare($sql);
 
         $db->bindValue(':title', $news->getTitle());
-        $db->bindValue(':user_id', $news->getUserId());
         $db->bindValue(':content', $news->getContent());
-        $req->bindValue(':id', $news->id(), PDO::PARAM_INT);
+        $db->bindValue(':id', $news->getId(), PDO::PARAM_INT);
 
-        $req->execute();
+        $db->execute();
 
         $_SESSION['message'] = 'Article modifier avec succes !'; 
     }
