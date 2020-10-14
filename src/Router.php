@@ -37,7 +37,6 @@ class Router
         if (!class_exists($this->controller)) {
             $this->controller = 'Project\controller\Controller';
         }
-
     }
 
     public function setMethod()

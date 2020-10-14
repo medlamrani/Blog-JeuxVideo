@@ -1,4 +1,4 @@
-<?php $title = 'Ajouter un chapitre'; ?>
+<?php $title = 'Modifier un chapitre'; ?>
 
 <?php ob_start(); ?>
 
@@ -13,9 +13,9 @@
 <?php ob_start(); ?>
 
     <div class="container form-game">
-        <form action="http://localhost/projet5/admin/addnews" method="post" class="form-signin bloc-form">
+        <form action="http://localhost/projet5/admin/updateNews/<?= $_GET['id'] ?>" method="post" class="form-signin bloc-form">
             <img class="mb-4" src="/projet5/src/public/image/news.png" width="72" height="72">
-            <h1 class="h3 mb-3 font-weight-normal">Nouveau article</h1>
+            <h1 class="h3 mb-3 font-weight-normal">modifier l'article</h1>
 
             <label for="title" >Titre de l'actu :</label>
             <input type="text" name="title" class="form-control" value=""/>
@@ -24,7 +24,7 @@
             <textarea class="form-control" id="content" name="content" rows="3"></textarea>
             
 
-            <input type="submit" value="Ajouter" name="addnews" class="btn btn-lg btn-primary btn-block mt-3"/>
+            <input type="submit" value="Modifier" name="updatenews" class="btn btn-lg btn-primary btn-block mt-3"/>
         </form>
     </div>
 

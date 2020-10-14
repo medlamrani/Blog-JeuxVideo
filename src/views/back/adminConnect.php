@@ -8,9 +8,18 @@
         <link rel="stylesheet" type="text/css" href="/projet5/src/public/css/bootstrap.css">
         <title>Se connecter</title>
     </head>
-    <body>    
+    <body>   
+        <?php if(isset($_SESSION['message'])) : ?> 
+            <div class="mt-5 alert alert-warning alert-dismissible fade show" role="alert">
+                <strong><?php echo $_SESSION['message'] ;?></strong> 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php endif; ?>
+
         <div class="login-bloc text-center">
-            <form action="?action=adminConnect" method="post" class="login">
+            <form action="http://localhost/projet5/admin/adminconnect" method="post" class="login">
                 <img class="mb-4" src="/projet5/src/public/image/user.png" alt="" width="72" height="72">
 
                 <h1 class="h3 mb-3 font-weight-normal">Connectez-vous</h1>

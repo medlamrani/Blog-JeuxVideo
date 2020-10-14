@@ -21,7 +21,6 @@
                 <?php 
                 foreach ($listOfGames as $game)
                 {
-                    //$resume = $game->getResume();
                     if (strlen($game->getResume()) <= 40)
                     {
                         $resume = $game->getResume();
@@ -34,14 +33,13 @@
                       
                       $resume = $debut;
                     }
-                   // $resume = $game->getResume();
                 ?>
                     <div class="game-card">
                         <h3 class="card-title text-center"> <?= $game->getName() ?></h3>
                         <p class="card-text"><?= nl2br($resume) ?></p>
                         <div class="platform"><?= $game->getPlatform() ?></div>
                         <div class="editor"><?= $game->getEditor() ?></div>
-                        <a href="http://localhost/projet5/Controller/Game/<?= $game->getId() ?>" class="btn btn-primary">Go</a>
+                        <a href="http://localhost/projet5/controller/game/<?= $game->getId() ?>" class="btn btn-primary">Go</a>
                     </div>                        
                 <?php
                 }

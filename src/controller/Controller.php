@@ -43,11 +43,12 @@ class Controller
                 $newsManager = new model\NewsManager();
                 $gameManager = new model\GameManager();
 
-                require('src/views/front/home.php');
+                $_SESSION['message'] = 'Vous etes connecte';
+                $this->home();
             }  
             else
             {
-                echo 'Mot de passe incorrect';
+                $_SESSION['message'] = 'Pseudo ou mot de passe ';
             }      
         }
         else
@@ -88,7 +89,7 @@ class Controller
     public function logOut()
     {
         session_destroy();
-        header('Location: index.php');
+        $this->home();
     }
 
     public function listOfGames()

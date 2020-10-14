@@ -1,3 +1,9 @@
+CREATE TABLE IF NOT EXISTS `role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `role` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `role_id` int(11) NOT NULL,
@@ -12,27 +18,6 @@ CREATE TABLE IF NOT EXISTS `user` (
   CONSTRAINT email_unique UNIQUE  (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-
-CREATE TABLE IF NOT EXISTS `role` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `role` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `game` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `resume` text NOT NULL,
-  `platform_id` int(11) NOT NULL,
-  `editor_id` int(11) NOT NULL,
-  `release_date` date NOT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT FK_PlatformGame FOREIGN KEY (platform_id) REFERENCES platform(id),
-  CONSTRAINT FK_EditorGame FOREIGN KEY (editor_id) REFERENCES editor(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
-
 CREATE TABLE IF NOT EXISTS `editor` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `editor_name` varchar(255) NOT NULL,
@@ -46,6 +31,17 @@ CREATE TABLE IF NOT EXISTS `platform` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+CREATE TABLE IF NOT EXISTS `game` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `resume` text NOT NULL,
+  `platform_id` int(11) NOT NULL,
+  `editor_id` int(11) NOT NULL,
+  `release_date` date NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT FK_PlatformGame FOREIGN KEY (platform_id) REFERENCES platform(id),
+  CONSTRAINT FK_EditorGame FOREIGN KEY (editor_id) REFERENCES editor(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `rating` (
   `user_id` int(11) NOT NULL,

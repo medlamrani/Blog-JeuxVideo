@@ -51,9 +51,10 @@ INSERT INTO `comment_news` (`id`, `news_id`, `user_id`, `content`, `report`, `co
 
 INSERT INTO `rating` (`game_id`, `user_id`, `rate`) VALUES
 (8, 1, 4),
-(8, 2, 5),
-(8, 2, 5),
-(8, 4, 3);
+(4, 2, 5),
+(5, 2, 5),
+(7, 2, 5),
+(6, 4, 3);
 
 
 

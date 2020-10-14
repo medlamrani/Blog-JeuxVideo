@@ -21,11 +21,11 @@ class CommentGameManager extends DBConnect
 
         $req->execute();
 
-        $_SESSIOn['message'] = 'Commentaire Ajoute !';
+        $_SESSION['message'] = 'Commentaire Ajoute !';
         
     }
 
-    public function delete()
+    public function delete($id)
     {
         $sql = "DELETE FROM comment_game WHERE id = ".(int) $id;
         $req = $this->connect()->exec($sql);
@@ -35,7 +35,6 @@ class CommentGameManager extends DBConnect
 
     public function listOfComment($gameId)
     {
-        //$sql = 'SELECT * FROM comment_game LEFT JOIN user ON user_id = user.id WHERE game_id = :game_id';
         $sql = 'SELECT comment_game.id, game_id as gameId, user.username as user, content, report, commentDate FROM comment_game 
                 INNER JOIN user ON comment_game.user_id = user.id 
                 WHERE game_id = :game_id';
@@ -67,9 +66,11 @@ class CommentGameManager extends DBConnect
         $_SESSION['message'] = 'Le commentaire a ete approuver'; 
     }
 
-    public function reportedComment()
+    public function reportedCommentGame()
     {
-        $sql= "SELECT * FROM comment_game WHERE report = 1";
+        $sql= "SELECT comment_game.id, game_id as gameId, user.username as user, content, report, commentDate FROM comment_game 
+        INNER JOIN user ON comment_game.user_id = user.id 
+        WHERE report = 1";
         $req = $this->connect()->query($sql);
 
         $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Project\lib\entity\CommentGame');

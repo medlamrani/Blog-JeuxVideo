@@ -12,8 +12,8 @@
 
 <?php ob_start(); ?>
     <div class="container form-game">
-        <form action="?action=addGame" method="post" class="form-signin bloc-form">
-            <img class="mb-4" src="src/public/image/controller.png" width="72" height="72">
+        <form action="http://localhost/projet5/admin/addgame" method="post" class="form-signin bloc-form">
+            <img class="mb-4" src="/projet5/src/public/image/controller.png" width="72" height="72">
             <h1 class="h3 mb-3 font-weight-normal">Ajouter un jeux</h1>
 
             <label for="name" >Nom :</label>
@@ -25,10 +25,8 @@
             <label for="platform" >Platform :</label>
             <select name="platform" class="form-control">
                 <?php
-                var_dump($listPlatform);
                     foreach($listPlatform as $platform)
-                    {  
-                        
+                    {   
                         echo '<option value="' ,$platform->getId(),'">',$platform->getPlatformName(),'  </option>';
                     }
                 ?>
