@@ -20,13 +20,13 @@ class Router
     {
         $page = filter_input(INPUT_GET, 'page');
         if (!isset($page)) {
-            $page = DEFAULT_CONTROLLER;
+            $page = self::DEFAULT_CONTROLLER;
         }
         $this->controller = $page;
 
         $method = filter_input(INPUT_GET, 'action');
         if (!isset($method)) {
-            $method = DEFAULT_METHOD;
+            $method = self::DEFAULT_METHOD;
         }
         $this->method = $method;
     }

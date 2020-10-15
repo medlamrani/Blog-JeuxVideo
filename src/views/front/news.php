@@ -22,7 +22,7 @@
                 <div class="col-10 offset-1 mb-5 mt-5">
                     <div class="text-justify mb-5">Publié le <?= $news->getAddDate()->format('d/m/Y à H\hi') ?></div>
                     <div class="text-justify article-text text-reader"><?= nl2br($news->getContent()) ?></div>
-                    <a class="btn btn-primary btn-lg active" href="index.php">Retour</a>
+                    <a class="btn btn-primary btn-lg active" href="http://localhost/projet5/controller/listofnews">Retour</a>
                 </div>    
             </div>
         </div>
