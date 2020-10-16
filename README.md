@@ -4,9 +4,9 @@
 
 # Prerequis pour lancer l'application :
 
-* Site dynamique (pour que votre pc puisse lire du php)
-* Editeur de text
-* Copier et coller le code dans l'editeur de text
+* WAMP doit etre installer pour que le php s'execute cote serveur
+* Editeur de text (Visual Studio Code)
+* Cloner le repository $ git clone https://github.com/USERNAME/REPOSITORY.git
 * Ouvrir Phpmyadmin et creer une base de donnee
 * Copier le code du fichier 00_create-table.sql ainsi que 01_insert-data.sql
 * Modifier le dossier DBConnect.php avec les informations de votre base de donnee
@@ -36,7 +36,6 @@
 # Liens 
 
 * Le lien de mon application : http://gameworld.web-devmed.fr/
-<<<<<<< HEAD
 
 Les identifiants de l'admin :
 
@@ -53,9 +52,6 @@ Les identifiants de l'admin :
 
 Pseudo : Admin
 Mdp : admin
-=======
-* Pour acceder a la partie administration : http://gameworld.web-devmed.fr/admin/administration
->>>>>>> refs/remotes/origin/master
 
 
 
