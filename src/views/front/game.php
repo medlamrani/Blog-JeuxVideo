@@ -94,7 +94,7 @@ if(isset($_SESSION['id']))
                 
                     <div class="text-justify mb-5">Posté par <strong><?= $comment->getUser() ?></strong> le <?= $comment->getCommentDate() ?></div>
                     <div class="text-justify article-text text-reader"><?= nl2br($comment->getContent()) ?></div>
-                    <a class="btn btn-primary btn-lg active" href="http://localhost/projet5/controller/reportcomment/<?= $comment->getId() ?>">Signaler</a>
+                    <a class="btn btn-primary btn-lg active" href="http://localhost/projet5/controller/reportcommentgame/<?= $comment->getId() ?>">Signaler</a>
                     <hr>
                 </div>    
             <?php

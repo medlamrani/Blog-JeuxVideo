@@ -177,7 +177,7 @@ class Controller
     }
 
    
-    public function addComment($newsId)
+    public function addComment()
     {
         $commentManager = new model\CommentNewsManager();
 
@@ -208,7 +208,7 @@ class Controller
         }       
     }
 
-    public function commentGame($gameId)
+    public function commentGame()
     {
         $commentManager = new model\CommentGameManager();
 
@@ -237,11 +237,21 @@ class Controller
         }       
     }
 
-    public function reportCommentGame($id)
+    public function reportComment()
+    {
+        $commentManager = new model\CommentNewsManager();
+
+        $reportComment = $commentManager->report($_GET['id']);
+
+        header("location:".  $_SERVER['HTTP_REFERER']); 
+        
+    }
+
+    public function reportCommentGame()
     {
         $commentManager = new model\CommentGameManager();
 
-        $reportComment = $commentManager->report($id);
+        $reportComment = $commentManager->report($_GET['id']);
 
         header("location:".  $_SERVER['HTTP_REFERER']); 
         
