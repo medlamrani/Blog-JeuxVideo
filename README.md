@@ -36,6 +36,7 @@
 # Liens 
 
 * Le lien de mon application : http://gameworld.web-devmed.fr/
+<<<<<<< HEAD
 
 Les identifiants de l'admin :
 
@@ -52,6 +53,9 @@ Les identifiants de l'admin :
 
 Pseudo : Admin
 Mdp : admin
+=======
+* Pour acceder a la partie administration : http://gameworld.web-devmed.fr/admin/administration
+>>>>>>> refs/remotes/origin/master
 
 
 
