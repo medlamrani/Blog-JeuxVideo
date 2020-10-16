@@ -6,7 +6,7 @@
 
 * WAMP doit etre installer pour que le php s'execute cote serveur
 * Editeur de text (Visual Studio Code)
-* Cloner le repository $ git clone https://github.com/USERNAME/REPOSITORY.git
+* Cloner le repository $ git clone https://github.com/medlamrani/projet5.git
 * Ouvrir Phpmyadmin et creer une base de donnee
 * Copier le code du fichier 00_create-table.sql ainsi que 01_insert-data.sql
 * Modifier le dossier DBConnect.php avec les informations de votre base de donnee
