@@ -25,7 +25,7 @@
 
 # Environnement
 
-* PHP 5.5.12
+* PHP 7
 * HTML/CSS
 * Javascript
 * MVC
